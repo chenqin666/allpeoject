@@ -1,0 +1,5 @@
+/**
+ * Created by xindao-xgd on 2018/10/18.
+ */
+var subjectType = [{'id': '1', 'value': '文科'}, {'id': '2', 'value': '理科'}]
+

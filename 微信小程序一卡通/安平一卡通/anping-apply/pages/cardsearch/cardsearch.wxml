@@ -1,0 +1,24 @@
+
+<view class="page-todos">
+   <view class="chantitie">卡号查询</view>
+			<view class="mainsall">
+				<view class="box">
+					<text> 姓名</text>
+					<input type="text" value=""  placeholder="请输入姓名" bindinput='nameinput' />
+				</view>
+				<view class="box">
+					<text>身份证号</text>
+					<input type="text" value="" placeholder="请输入身份证号" bindinput='codeinput'/>
+				</view>
+				
+			</view>
+			<view class="btn" bindtap="getAudit">查询</view>
+
+<view class="cardlist"  wx:if="{{returnnumber!=''}}">
+    <span>一卡通卡号：</span>
+    <span>{{returnnumber}}</span>
+    <span style='color:#2ab1f3;padding:25rpx;' bindtap="call">点击复制</span>
+  </view>
+
+
+</view>

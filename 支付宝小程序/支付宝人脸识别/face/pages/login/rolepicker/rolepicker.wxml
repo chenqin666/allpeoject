@@ -1,0 +1,13 @@
+<!--pages/login/rolepicker/rolepicker.wxml-->
+<!--pages/login/login.wxml-->
+<view class='page11'>
+
+
+  <view class='btn-box11' style="margin-top:2rem;">
+    <image class="btn_parent" bindtap='go2parenthome' mode="aspectFit" src="../../../images/btn_role_picker_parent.png"></image>
+  </view>
+
+  <view class='btn-box11' style="margin-top:1rem;">
+    <image class="btn_teacher" bindtap='go2teacherhome' mode="aspectFit" src="../../../images/btn_role_picker_teacher.png"></image>
+  </view>
+</view>

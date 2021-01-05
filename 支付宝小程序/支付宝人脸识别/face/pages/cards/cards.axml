@@ -1,0 +1,131 @@
+
+<view class="page-todo">
+
+  <view class="cardheaders">
+     <image src="../../assets/hu.png"  alt=""></image>
+     <view class="nochild">
+       <view class="tishi">
+         <text>尊敬的家长</text>
+          <text>使用以下功能前，请先关联您的孩子</text>
+       </view>
+       <view class="guanlian" onTap="onClickAdd">
+         关联孩子
+       </view>
+     </view>
+     <!-- <view class="havechild">
+     <image src="../../assets/heads.png"  alt=""></image>
+       <view class="tishione">
+         <text>高小凡</text>
+          <text>凡高中学  二年级2002班 </text>
+       </view>
+     </view> -->
+  </view>
+  <view class="cardcontent">
+    <view class="contenttop">
+      <view class="face" onTap="goface">
+         <image src="../../assets/icon_face.png"  alt=""></image>
+         <view>人脸识别</view>
+      </view>
+      <view class="face" onTap="gopay">
+         <image src="../../assets/icon_pay.png"  alt=""></image>
+         <view>支付功能</view>
+      </view>
+    </view>
+     <view class="contenttop">
+      <view class="money">
+         <view>今日消费</view>
+         <view>¥0.00</view>
+      </view>
+      <view class="lineview">
+        
+      </view>
+      <view class="money">
+         <view>本月消费</view>
+         <view>¥0.00</view>
+      </view>
+    </view>
+     <view class="contentbottom">
+      <view class="xiaofei">
+        <text>校园消费</text>
+        <text onTap="gomore">更多</text>
+      </view>
+      <!-- <view class="more">
+        暂无消费记录
+      </view> -->
+       <!-- <scroll-view scroll-y="true" style="height: 100%" > -->
+      <view class="moretwo">
+        <view class="jilu">
+          <view class="jiluleft">
+            <text>食堂就餐</text>
+            <text>2019-07-05 12:20:00</text>
+          </view>
+          <view class="jiluright">
+            -5.00
+          </view>
+        </view>
+        <view class="jilu">
+          <view class="jiluleft">
+            <text>食堂就餐</text>
+            <text>2019-07-05 12:20:00</text>
+          </view>
+          <view class="jiluright">
+            -5.00
+          </view>
+        </view>
+        <view class="jilu">
+          <view class="jiluleft">
+            <text>食堂就餐</text>
+            <text>2019-07-05 12:20:00</text>
+          </view>
+          <view class="jiluright">
+            -5.00
+          </view>
+        </view>
+        
+        <view class="jilu">
+          <view class="jiluleft">
+            <text>食堂就餐</text>
+            <text>2019-07-05 12:20:00</text>
+          </view>
+          <view class="jiluright">
+            -5.00
+          </view>
+        </view>
+      </view>
+      <!-- </scroll-view> -->
+    </view>
+  </view>
+  <!-- <view class="content_boxcar">
+     <scroll-view scroll-y="true" style="height: 100%" a:if="{{cardlists && cardlists.length>0}}">
+        <view class="cell-box-card" a:for="{{cardlists}}" onTap="tocarddetail"  data-value="{{item}}">
+            <view class="topimg_card">
+                <image src="../../assets/card.png" class="sdf" alt=""></image>
+                <view class="hea">
+                    <view>
+                      {{item.school_name}}
+                    </view>
+                    <view class="spants">
+                     {{item.stu_name}}
+                    </view>
+                </view>
+                <view class="center" style="font-size: 0.55rem;">
+                     {{item.card_no}}
+                </view>
+                <view class="footers_card">
+                    校园一卡通
+                </view>
+            </view>
+        </view>
+        </scroll-view>
+     
+            <view a:if="{{cardlists.length==0 && leaveStartShown==true}}">
+                  <view class="linecenter">
+                      <image src="../../assets/unbind.png" class="sdf" alt=""></image>
+                      <view>
+                          暂无绑定卡片,快去绑定吧
+                      </view>
+                  </view>
+            </view>
+            
+    </view> -->
+</view>

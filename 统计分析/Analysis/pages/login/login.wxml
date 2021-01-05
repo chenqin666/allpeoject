@@ -1,0 +1,34 @@
+<!--pages/login/login.wxml-->
+<view class='page'>
+
+  <view  class="loginTitle">
+  家校统计
+  </view>
+
+
+  <!-- 用户名 -->
+  <view class='contentView' style='margin-top:124rpx'>
+    <image mode="aspectFit" src="../../images/icon_tag_mobile.png" class='img'></image>
+    <view class='slidline'></view>
+    <input class='input'   placeholder-class='placeholder' placeholder='请输入账号/手机号' name="mobile" bindinput='mobileinput' value='{{mobile}}'></input>
+  </view>
+
+  <view class='lineView' style='margin-left:46rpx;margin-right:46rpx;'/>
+  
+   <!-- 验证码 -->
+  <view class='contentView' >
+    <image mode="aspectFit" src="../../images/icon_tag_valid.png" class='img'></image>
+    <view class='slidline'></view>
+    <input class='input'  placeholder-class='placeholder' placeholder='请输入密码' name="code" bindinput='codeinput' type='password' value='{{code}}'></input>
+  
+  </view>
+
+  <view class='lineView' style='margin-left:46rpx;margin-right:46rpx;'/>
+
+  <button class='buttonCode' bindtap='go2login' style='margin-top:61rpx'>登录</button>
+
+
+<view class='help-box'>
+  <text class='help' >@凡高教育</text>
+  </view>
+</view>

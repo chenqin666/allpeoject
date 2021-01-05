@@ -1,0 +1,68 @@
+
+<!--pages/login/login.wxml-->
+<view class='page'>
+<!-- style="background-image: url(../../img/first_3.png)" -->
+  <view class="school_box">
+    <image class="school_img" src="../../img/first_3.png"></image>
+    <text class="title">欢迎使用校园人员信息查询系统</text>
+  </view>
+  <view class="logos">
+       <image class="logo_img" wx:if="{{schoolinfoone.schoolIcon}}" src="{{schoolinfoone.schoolIcon}}"></image>
+        <image  class="logo_img" wx:else src="../../img/yuanxin.png"></image>
+               
+        <view wx:if="{{schoolinfoone.schoolName}}" class="logotitle">{{schoolinfoone.schoolName}}</view>
+        <view wx:else class="logotitle">凡高教育</view>
+
+    </view>
+
+  <!-- 输入账号密码 -->
+<view class="bgcenter" wx:if="{{showpsd}}">
+      <view class='contentView' style='margin-top:40rpx'>
+        <view>账号：</view>
+        <input class='input' type="text"  placeholder-class='placeholder' placeholder='请输入账号' name="mobile" value="{{mobile}}" bindinput='mobileinput' placeholder-style='text-align:right'></input>
+      </view>
+      <view class='lineView' style=''/>
+      
+      <view class='contentView' >
+        <view>密码：</view>
+        <input class='input' value="{{name}}" placeholder-class='placeholder' placeholder='请输入密码' placeholder-style='text-align:right' name="code" bindinput='codeinput'></input>
+      
+      </view>
+      <view class='lineView' style=''/>
+      <button class='btn'  bindtap='go2login'>绑定</button>
+ </view>
+   <!-- 输入账号密码 -->
+
+    <!-- 选择校区 -->
+  <view class="bgcenter" wx:if="{{showschool}}">
+      <view class='contentViewtitle' style='margin-top:40rpx'>
+       —— 校园人员信息查询 ——
+      </view>
+
+      
+      <view class='contentView' >
+       
+        <view>所属校区：</view>
+        
+        <input class='input'  placeholder-class='placeholder' disabled="true" placeholder='请选择校区' name="code" value="{{schoolinfoone.schoolName}}" bindinput='codeinput' placeholder-style='text-align:right'></input>
+        <!-- <picker  mode='selector'  value="{{index}}"  range="{{dataArr}}" >
+           <image mode="aspectFit" src="../../img/you.png" class='img'></image>
+        
+        </picker> -->
+      </view>
+      <view class='lineView' style=''/>
+      <button class='btn' bindtap='facerecognition'>人脸认证</button>
+ </view>
+<!-- 选择校区 -->
+
+
+<view class="foter">
+    <view class="bottom_boxs" style="font-size: 26rpx;">凡高云校园数字一体化解决方案</view>
+    <!-- <view class="bottom_boxss" style="font-size: 26rpx; color: gray;" bindtap='fgyun'>
+        本系统由
+        <text  style="color: #36a7fa;">凡高云校园</text>
+           
+         提供技术支持
+    </view> -->
+</view>
+</view>

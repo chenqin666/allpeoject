@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html;charset=gbk">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <title>卡挂失</title>
+    <link href="css/reset.css" rel="stylesheet">
+     <link href="css/login.css" rel="stylesheet">
+    <link href="css/iosSelect.css" rel="stylesheet">
+    <script type="text/javascript">
+        var w = document.documentElement.clientWidth >= 1024 ? 1024 : document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = w / 750 * 100 + 'px';
+    </script>
+    <style>
+        body {
+            background-color: #f6f6f6;
+            height: 100%;
+        }
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body style="background: #f6f6f6;">
+<div class="warp" id="warp" v-cloak>
+        <div class="chantitie" >
+               卡挂失
+        </div>
+        <div class="mainlock">
+            <div class="box">
+                <span> 姓名</span>
+                <input type="text" value="" readonly="readonly" v-model="stunames">
+            </div>
+            <div class="box">
+                <span>学号/卡号</span>
+                <input type="text" value="" readonly="readonly" v-model="cardnumber">
+            </div>
+            <div class="box">
+                <span>当前状态</span>
+                <input type="text" value="" readonly="readonly" style="color: green"  v-model="status">
+    
+            </div>
+            <!-- border-top: 0.5px solid #dedede;" -->
+            <div class="box" style="margin-top: 0.3rem;">
+                <span>密码</span>
+                <input type="password" value="" placeholder="请填写6位新查询密码" v-model="repassword">
+            </div>
+        </div>
+        <div class="tixing">
+            <p>提醒：查询密码默认身份证后六位，X用0代替</p>
+        </div>
+        <div class="btn" @click="to_payment">提交</div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-md5.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/config.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="css/mint-ui.css">
+<!-- 引入组件库 -->
+<script src="js/mint-ui.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="css/min-uis.css">
+<script src="js/mint-uis.js"></script>
+
+<!-- <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css"> -->
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script>
+    new Vue({
+        el: '#warp',
+        data: {
+            cardnumber:'',
+            childidnumber:'',
+            stunames:'',
+            cardmid:'',
+            status:'',
+            repassword:'',
+        },
+        mounted: function () {
+            // 卡片信息
+            this.cardnumber=sessionStorage.snumber
+            this.childidnumber=sessionStorage.childid
+            this.stunames=sessionStorage.stu_name
+            this.cardmid=sessionStorage.mid
+            const that = this;
+            // this.getDetail();
+        },
+        methods: {
+            //提交信息
+            to_payment: function () {
+                this.errorTips('暂无');
+                return
+                var that = this;
+                var request = {
+                    order_sn: sessionStorage.order_sn,
+                    pay_type: "alipayH5",
+                    stu_id: sessionStorage.stu_id
+                };
+                $.ajax({
+                    type: "post",
+                    url: root + payment,
+                    beforeSend: function (XMLHttpRequest) {
+                        that.loading = true;
+                        XMLHttpRequest.setRequestHeader("token", sessionStorage.token);
+                    },
+                    data: {
+                        request: JSON.stringify(request)
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.code == 0) {
+                            that.errorTips('挂失成功！');
+                            // setTimeout(function(){
+                                window.location.href = 'cards.html'
+                            // },1000)
+                        }else{
+                            that.errorTips(data.msg);
+                        }
+                    }
+                });
+            },
+
+            getDetail: function () {
+                var that = this;
+                var request = {
+                    stu_id: sessionStorage.stu_id,
+                    project_id: sessionStorage.project_id,
+                    order_sn: sessionStorage.order_sn
+                };
+                var requesturl = root;
+                $.ajax({
+                    type: "post",
+                    url: requesturl,
+                    beforeSend: function (XMLHttpRequest) {
+                        // XMLHttpRequest.setRequestHeader("token", sessionStorage.token);
+                    },
+                    data: {
+                        request: JSON.stringify(request)
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.code == 0) {
+                           
+                        } else {
+                            that.errorTips(data.msg);
+                        }
+                    },
+                    error: function () {
+                        // that.closeAnimation();
+                        that.errorTips('网络错误,请重试！');
+                    }
+                });
+            },
+
+            errorTips: function (msg) {
+                this.$toast(msg)
+            }
+            ,
+            loadAnimation: function () {
+                this.$indicator.open({
+                    spinnerType: 'fading-circle'
+                });
+            }
+            ,
+            closeAnimation: function () {
+                this.$indicator.close();
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

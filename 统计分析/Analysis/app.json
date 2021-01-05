@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/home/home",
+    "pages/my/my",
+    "pages/totalview/totalview",
+    "pages/dateselect/dateselect",
+    "pages/detail/detail",
+    "pages/classdetail/classdetail",
+    "pages/classstudentlist/classstudentlist",
+    "pages/todayclasslist/todayclasslist",
+    "pages/todaystudentinfo/todaystudentinfo"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "家校统计",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#ff9a00",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/icon_tab_one_normal.png",
+        "selectedIconPath": "images/icon_tab_one_selected.png"
+      },
+      {
+        "pagePath": "pages/totalview/totalview",
+        "text": "数据总览",
+        "iconPath": "images/icon_tab_two_normal.png",
+        "selectedIconPath": "images/icon_tab_two_selected.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/icon_tab_three_normal.png",
+        "selectedIconPath": "images/icon_tab_three_selected.png"
+      }
+    ],
+    "position": "bottom"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

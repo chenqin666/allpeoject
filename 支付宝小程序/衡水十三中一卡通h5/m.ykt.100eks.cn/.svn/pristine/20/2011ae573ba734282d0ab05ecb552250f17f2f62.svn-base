@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="content-type" content="text/html;charset=gbk">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<title>修改查询密码</title>
+		<link href="css/reset.css" rel="stylesheet">
+		<link href="css/login.css" rel="stylesheet">
+		<script type="text/javascript">
+			var w = document.documentElement.clientWidth >= 1024 ? 1024 : document.documentElement.clientWidth;
+			document.documentElement.style.fontSize = w / 750 * 100 + 'px';
+		</script>
+		<style>
+			body {
+			    background-color: #f6f6f6;
+			}
+		
+			[v-cloak] {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="warp" id="warp" v-cloak>
+			<div class="chantitie">修改查询密码</div>
+			<div class="mainsall">
+				<div class="box">
+					<span> 原密码</span>
+					<input type="password" value=""  placeholder="原始密码中X用0代替" v-model="first_psd">
+				</div>
+				<div class="box">
+					<span>新密码</span>
+					<input type="password" value="" placeholder="请填写6位新查询密码" v-model="new_psd">
+				</div>
+				<div class="box">
+					<span>确认密码</span>
+				   <input type="password" value="" placeholder="确认新查询密码" v-model="shue_psd">
+				</div>
+			</div>
+			<div class="btn" @click="getAudit">提交</div>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/jquery-md5.js"></script>
+		<script src="js/config.js"></script>
+		<!-- 引入样式 -->
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+		<script src="js/mint-ui.js"></script>
+		<script>
+			new Vue({
+				el: '#warp',
+				data: {
+					stu_name:'',
+					id_card:'',
+					finish_school_name:'',
+					data:'',
+					user:'',
+					first_psd:'',//原密码
+					new_psd:'',//新密码
+					shue_psd:'',//确认密码
+				},
+				created:function(){
+
+				},
+				mounted: function() {
+					// if (!sessionStorage.user) {
+					//     window.location.href = 'login.html'
+					// } else {
+					//     this.user = JSON.parse(sessionStorage.user);
+					// }
+					
+				},
+				methods: {
+					getbrowertype: function() {
+						var ua = navigator.userAgent.toLowerCase();
+						if (ua.match(/MicroMessenger/i) == "micromessenger") {
+							return 1;
+						} else if (ua.match(/Alipay/i) == "alipay") {
+							return 2;
+						} else {
+							return 3;
+						}
+					},
+					/*获取参数*/
+					getQueryString: function(name) {
+						var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+						var r = window.location.search.substr(1).match(reg);
+						if (r != null) return unescape(r[2]);
+						return null;
+					},
+					
+					getAudit: function () {
+						var that = this;
+						if(!that.first_psd){
+							this.errorTips('请填写原密码');
+                    		return false;
+						}
+						if(!that.new_psd){
+							this.errorTips('请填写新密码');
+                    		return false;
+						}
+						if(!that.shue_psd){
+							this.errorTips('请填确认查询密码');
+                    		return false;
+						}
+						if(that.new_psd!=that.shue_psd){
+							this.errorTips('新密码和确认密码输入不一致');
+                    		return false;
+						}
+						var request = {
+							"card_num":sessionStorage.snumber,
+							"mid":sessionStorage.mid,
+							"new_password":that.new_psd,
+							"password":that.first_psd,
+						};
+						
+						that.loadAnimation();
+						$.ajax({
+							type: "post",
+							url: root + yktpassword,
+							beforeSend: function (XMLHttpRequest) {
+								XMLHttpRequest.setRequestHeader("token", sessionStorage.token);
+							},
+							data: {
+								request: JSON.stringify(request)
+							},
+							dataType: "json",
+							success: function (data) {
+								that.closeAnimation();
+								if (data.code == 0) {
+									that.errorTips('密码修改成功');
+									// setTimeout(function(){
+										window.location.href = 'cards.html'
+									// },2000)
+									
+								} else {
+									that.errorTips(data.msg);
+								}
+							},
+							error: function () {
+								that.closeAnimation();
+								that.errorTips('网络错误,请重试！');
+							}
+						});
+					},
+
+					errorTips: function(msg) {
+						this.$toast(msg)
+					},
+					loadAnimation: function() {
+						this.$indicator.open({
+							spinnerType: 'fading-circle'
+						});
+					},
+					closeAnimation: function() {
+						this.$indicator.close();
+					}
+				}
+			})
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,28 @@
+/* pages/login/rolepicker/rolepicker.wxss */
+
+.page11 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #98d6f4;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-box11 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn_parent {
+  width: 3rem;
+  height: 3rem;
+}
+
+.btn_teacher {
+  width: 3rem;
+  height: 3rem;
+}

@@ -1,0 +1,56 @@
+<!--pages/classdetail/classdetail.wxml-->
+<view class='page'>
+
+  
+
+
+  <scroll-view wx:if="{{list&&list.length>0}}" scroll-y="true" style='height:100%;'>
+
+    <block wx:for='{{list}}' wx:index="index" wx:key="item">
+
+      <view class='item_box' bindtap='onItemClick' data-item='{{item}}'>
+
+        <view class='grade_box'>
+
+          <view class='class_name'>
+            {{item.class_name}}
+          </view>
+          <view class='grade_name'>
+            {{item.grade_name}}
+          </view>
+
+        </view>
+
+        <view class='content_box'>
+          <view class='title'>今日充值人数：</view>
+          <view class='value'>{{item.recharge_total}}</view>
+          <view class='title'>今日绑定人数：</view>
+          <view class='value'>{{item.bind_total}}</view>
+
+          <view class='title'>今日充值总额：</view>
+          <view class='value'>{{"￥"+item.total_money}}</view>
+
+        </view>
+
+      </view>
+
+
+
+      <view class='hor_line'></view>
+    </block>
+
+    <view style='height:165rpx;' />
+
+  </scroll-view>
+
+  <!-- <view class='blank-box' wx:if="{{list&&list.length==0}}">
+    <image class='blank-image' >
+    </image>
+    <view class='blank-text'>未搜到结果哦！</view>
+
+  </view> -->
+
+</view>
+
+
+<view class='topline'></view>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html;charset=gbk">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <title>充值</title>
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+    <script type="text/javascript">
+        var w = document.documentElement.clientWidth >= 1024 ? 1024 : document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = w / 750 * 100 + 'px';
+    </script>
+    <style>
+        body, html {
+            background: #f9f9f9;
+            padding-bottom: 1rem;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="warp" id="warp" v-cloak >
+        <div class="chantitie" >
+                充值
+         </div>
+         <div class="mainlock">
+            <div class="box">
+                <span> 姓名</span>
+                <input type="text" value="" readonly="readonly" v-model="stunames">
+            </div>
+            <div class="box">
+                <span>学号/卡号</span>
+                <input type="text" value="" readonly="readonly" v-model="cardnumber">
+            </div>
+        </div>
+        
+        <div class="jineall" >
+            <p class="pjine">充值金额</p>
+            <div class="jinerech" style="display: inline-block" v-for="item in options">
+                <div v-bind:class="item.value!==moneys?'listall':'typeitemnormal'"  @click="onTypeClick_one(item.value)">
+                       <p style="text-align: center"> ¥<span>{{item.value}}</span></p>
+                    <img v-if="item.value==moneys" src="./img/yixuan.png" style='position:absolute; width:29px;height:26px;right:0;bottom:0;' alt="">
+                   
+                </div>
+            </div>
+        </div>
+        <div class="btn" @click="go2recharge">立即充值</div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/config.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+<script src="js/mint-ui.js"></script>
+<script>
+    new Vue({
+        el: '#warp',
+        data: {
+            cardnumber:'',
+            stunames:'',
+            cardmid:'',
+            moneys:'',
+            options: [{
+                label: '1',
+                value: '1'
+            },
+            {
+                label: '50',
+                value: '50'
+            },
+            {
+                label: '100',
+                value: '100'
+            },
+            {
+                label: '200',
+                value: '200'
+            },{
+                label: '300',
+                value: '300'
+            },
+            {
+                label: '500',
+                value: '500'
+            }
+        ],
+        },
+        mounted: function () {
+             // 卡片信息
+            this.cardnumber=sessionStorage.snumber
+            this.stunames=sessionStorage.stu_name
+            this.cardmid=sessionStorage.mid
+            
+            this.initEventListener();
+        },
+        methods: {
+            onTypeClick_one: function(money) {
+                this.moneys=money
+            },
+            initEventListener:function () {
+                document.body.addEventListener('focusout', function () {
+                    window.scrollTo(0,0);
+                })
+                document.addEventListener('touchstart',touch, false);
+                document.addEventListener('touchmove',touch, false);
+                document.addEventListener('touchend',touch, false);
+                function touch (event){
+                    var event = event || window.event;
+                    var oInp = document.getElementById("inp");
+                    switch(event.type){
+                        case "touchstart":
+                            break;
+                        case "touchend":
+                            window.scrollTo(0,0);
+                            break;
+                        case "touchmove":
+//                        event.preventDefault();
+
+                            break;
+                    }
+
+                }
+            },
+
+            /*支付宝支付*/
+            go2recharge: function () {
+               var that = this;
+                var request = {
+                    "mid": sessionStorage.mid,
+                    "card_num": sessionStorage.snumber,
+                    "stu_name": sessionStorage.stu_name,
+                    "fee": this.moneys
+                };
+                that.loadAnimation();
+                // setTimeout(function () {
+
+                $.ajax({
+                    type: "post",
+                    url: root + yktpay,
+                    beforeSend: function (XMLHttpRequest) {
+                        XMLHttpRequest.setRequestHeader("token", sessionStorage.token);
+                    },
+                    data: {
+                        request: JSON.stringify(request)
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                       that.closeAnimation();
+                        if (data.code == 0) {
+                            that.errorTips(data.msg);
+                            window.location.href = data.data//支付宝跳转链接
+                        }
+                         else {
+                            that.errorTips(data.msg);
+                        }
+                    },
+                    error: function () {
+                        that.closeAnimation();
+                        that.errorTips('网络错误,请重试！');
+                    }
+                });
+                // },1000);
+            },
+            /*获取参数*/
+            getQueryString: function (name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]);
+                return null;
+            },
+            errorTips: function (msg) {
+                this.$toast(msg)
+            },
+            loadAnimation: function () {
+                this.$indicator.open({
+                    spinnerType: 'fading-circle'
+                });
+            },
+            closeAnimation: function () {
+                this.$indicator.close();
+            }
+
+        }
+    })
+</script>
+
+</body>
+</html>

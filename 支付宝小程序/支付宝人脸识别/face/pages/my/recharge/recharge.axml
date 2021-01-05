@@ -1,0 +1,146 @@
+<!--pages/my/recharge/recharge.wxml-->
+<wxs src="../../common/common.wxs" module="tools" />
+<view class='page'>
+ <view class='cell-box'>
+    <view class="cell-title">
+      当前孩子:
+    </view>
+
+    <view class="cell-value" >
+      
+      {{logininfo.last_login_student.username}}
+    </view>
+  </view>
+<view class='hor_line' style='margin-left:0.24rem;'></view>
+
+  <view class='cell-box'>
+    <view class="cell-title">
+      当前状态:
+    </view>
+
+    <view class="cell-value" style='color:{{studentStatus==0?"#999999":(isvalid==0?"#09bb07":(isvalid==1?"#f76260":"#999999"))}}'>
+      
+      {{studentStatus==0?"未开通":(isvalid==0?"正常":(isvalid==1?"即将到期":"已到期"))}}
+    </view>
+  </view>
+
+  <view class='hor_line' style='margin-left:0.24rem;'></view>
+
+  <view class='cell-box'>
+    <view class="cell-title">
+      到期日期:
+    </view>
+
+    <view class="cell-value" style='color:{{studentStatus==0?"#999999":"#333333"}}'>
+      {{studentStatus==0?"未开通":validdate}}
+    </view>
+  </view>
+
+  <view class='hor_line' style='margin-left:0.24rem;'></view>
+
+  <!-- <view class='cell-box'>
+    <view class="cell-title">
+      充值套餐
+    </view>
+  </view> -->
+
+
+  <view class='types-box'>
+
+    <!-- <view a:for='{{list}}' style='display:inline-block;' a:index="index" a:key="item">
+
+      <view class='{{checkedid==item.product_id?"typeitemcheck":"typeitemnormal"}}' onTap='onTypeClick' data-id='{{item.product_id}}' >
+          <view class='type_heng'>
+              {{"￥"+item.price}}
+          </view>
+          <view class='type_name'>
+            ￥{{(item.price-0)-(item.discount_price-0)}}
+          </view>
+          <view class='type_year'>
+             <view a:if="{{item.sf_type==1}}"> 一年</view>
+             <view a:if="{{item.sf_type==2}}"> 二年</view>
+             <view a:if="{{item.sf_type==3}}"> 三年</view>
+          </view>
+
+          <view  a:if='{{(item.discount_price-0)>0}}' class="yohui" > 优惠{{item.discount_price}}</view>
+         
+
+          <image a:if="{{checkedid==item.product_id}}" src='../../../assets/icon_child_checked.png' style='position:absolute; width:0.6rem;height:0.6rem;right:0;bottom:0;'></image>
+      </view>
+    </view> -->
+
+
+ 
+  <view a:if="{{list.length>0}}" class='{{checkedid==allcheck.product_id?"typeitemcheck":"typeitemnormal"}}' onTap='onTypeClick' data-id='{{allcheck.product_id}}' >
+          <view class='type_heng'>
+           {{allcheck.product_name}}
+          </view>
+          <!-- 悬浮弹框 -->
+        <view class="xuanfu" style="left: 0;" a:if="{{checkedid==allcheck.product_id && allcheck}}">
+        <!-- mode="widthFix" -->
+         <image  src="../../../assets/xuanfuleft.png" class='xuanfuimg'></image>
+        <view>
+             <view class="xuanfuone">{{"￥"+allcheck.price}} </view>
+             <view class="xuanfutwo">{{allcheck.product_desc}} </view>
+         </view> 
+      </view>
+      
+    </view> 
+
+<!-- 第二个 -->
+<view a:if="{{allcheckone!='' && list.length>0}}" class='{{checkedid==allcheckone.product_id?"typeitemcheck":"typeitemnormal"}}' onTap='onTypeClick' data-id='{{allcheckone.product_id}}' >
+          <view class='type_heng'>
+           {{allcheckone.product_name}}
+          </view>
+          <!-- 悬浮弹框 -->
+        
+      <view class="xuanfu" style="right: 0;" a:if="{{checkedid==allcheckone.product_id &&allcheckone }}">
+        <image  src="../../../assets/xuanfuright.png" class='xuanfuimg'></image>
+         <view>
+             <view class="xuanfuone">{{"￥"+allcheckone.price}} </view>
+             <view class="xuanfutwo">{{allcheckone.product_desc}} </view>
+         </view>
+      </view> 
+      
+    </view>
+
+ 
+
+  
+  <view class='xieyi-box' a:if="{{payNotice}}">
+    (
+    <span class='xieyi_title'>
+      {{payNotice}}
+    </span>
+     ，
+    <span class='price_change' onTap='handlepricechange'>
+      点击查看调价方案
+    </span>
+    )
+  </view>
+
+
+
+  </view>
+
+
+
+<view class='btn-box' style='margin-top:0.4rem;' a:if="{{list.length>0}}">
+
+  <view class='btn'  onTap='go2recharge'>续费充值</view>
+</view>
+
+<view class='xieyi-box' style='margin-top:0.05rem;' a:if="{{list.length>0}}">
+    <view class='xieyi_title'>
+      点击"续费充值"代表你已同意
+    </view>
+    <view class='xieyi_name' onTap='xieyi'>
+      《用户续费充值协议》
+    </view>
+
+  </view>
+
+</view>
+
+
+<view class='topline' />

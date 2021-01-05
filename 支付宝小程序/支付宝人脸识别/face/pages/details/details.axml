@@ -1,0 +1,32 @@
+<!--pages/expenditure/expenditure.wxml-->
+<!-- a:if="{{pageShow}}" -->
+<view class="expenditre" >
+  
+    <view class="expenditre_section" a:if="{{consume_list.length}}" a:for="{{consume_list}}"a:key="indexs">
+        <view class="yuefen">{{item.m}}</view>
+        <view class="expenditre_section_box">
+            <view class="expenditre_list"a:for="{{item.list}}"a:for-item="newitem"a:key="index">
+                <view class="expenditre_title">
+                    <view class="expenditre_title_name">
+                        通话费用
+                    </view>
+                    <view class="expenditre_title_num">
+                        {{newitem.pay_amount}}
+                    </view>
+                </view>
+                
+                <view class="expenditre_long">
+                 
+                    <view class="expenditre_long_date">
+                        {{newitem.create_time}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+  
+    <view class="expenditre_empty"a:if="{{!consume_list.length}}">
+        <!-- <image src="../../../images/consume_empty.png"></image> -->
+        <view>暂无交易明细</view>
+    </view>
+</view>

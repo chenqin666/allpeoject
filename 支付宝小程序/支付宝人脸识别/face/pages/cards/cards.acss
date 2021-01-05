@@ -1,0 +1,360 @@
+/* required by usingComponents */
+.page-todo {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+ 
+}
+
+.cardheaders{
+    width: 100%;
+    height: 3.3rem;
+    position: relative;
+   
+}
+.cardheaders image{
+ width: 100%;
+ height: 100%;
+
+}
+.havechild{
+  position: absolute;
+  top: 0.8rem;
+   display: flex;
+  flex-direction: row;
+  width: 93%;
+  margin: 0 3.5%;
+  align-self: center;
+}
+.havechild image{
+ width: 0.9rem;
+ height: 0.9rem;
+ margin-right: 0.2rem;
+
+}
+.tishione{
+  display: flex;
+  flex-direction: column;
+}
+.tishione text:first-child{
+
+font-size: 0.32rem;
+font-family: PingFang SC;
+font-weight: 400;
+color: #FFFFFF;
+}
+.tishione text:last-child{
+  margin-top: 0.2rem;
+font-size: 0.26rem;
+font-family: PingFang SC;
+font-weight: 400;
+color: #FFFFFF;
+}
+.nochild{
+  position: absolute;
+  top: 0.8rem;
+   display: flex;
+  flex-direction: row;
+  width: 93%;
+  margin: 0 3.5%;
+  align-self: center;
+}
+.tishi{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  
+font-size: 0.28rem;
+font-family: PingFang SC;
+font-weight: 400;
+color: #FFFFFF;
+line-height: 0.39rem;
+}
+.guanlian{
+  width: 1.4rem;
+height: 0.5rem;
+background: #FFFFFF;
+border-radius: 0.25rem;
+line-height: 0.5rem;
+text-align: center;
+font-size: 0.26rem;
+font-family: PingFang SC;
+font-weight: 400;
+color: #2AB1F3;
+}
+.cardcontent{
+  height: 100%;
+  width: 93%;
+  margin: 0 auto;
+  position: absolute;
+  top: 2.4rem;
+      align-self: center;
+  
+  display: flex;
+  flex-direction: column;
+}
+.contenttop{
+   display: flex;
+  flex-direction: row;
+  margin-bottom: 0.2rem;
+height: 1.9rem;
+background: #FFFFFF;
+box-shadow: 0.1rem 0.1rem 0.5rem  #eeeeee;;
+border-radius: 0.1rem;
+}
+.money{
+   flex: 1;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+}
+.money view:first-child{
+  margin-top: 0.36rem;
+  margin-left: 0.3rem;
+font-size: 0.26rem;
+font-family: PingFang SC;
+font-weight: 400;
+color: #999999;
+
+}
+.money view:last-child{
+   margin-top: 0.3rem;
+  margin-left: 0.4rem;
+font-size: 0.44rem;
+font-family: PingFang SC;
+font-weight: 400;
+color: #333333;
+}
+.lineview{
+  align-self: center;
+  height: 1.65rem;
+  width: 0.01rem;
+  
+background: #E2E2E2;
+}
+.face{
+  /* line-height: 1.9rem; */
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+.face image{
+  text-align: center;
+  margin: 0 auto;
+width: 0.54rem;
+height: 0.54rem;
+}
+.face view{
+  margin-top: 0.2rem;
+font-size: 0.26rem;
+font-family: PingFang SC;
+font-weight: 400;
+color: #333333;
+}
+.contentbottom{
+ flex: 1;
+ overflow-y: scroll;
+  margin-bottom: 0.2rem;
+max-height: 4.7rem;
+background: #FFFFFF;
+box-shadow: 0.1rem 0.1rem 0.5rem  #eeeeee;;
+border-radius: 0.1rem;
+}
+
+.xiaofei{
+  width: 100%;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  border-bottom: 0.01rem solid #E2E2E2;
+  display: flex;
+  flex-direction: row;
+
+}
+.xiaofei text:first-child{
+margin-left: 0.3rem;
+
+
+font-size: 0.26rem;
+font-family: PingFang SC;
+font-weight: bold;
+color: #333333;
+}
+.xiaofei text:last-child{
+  text-align: right;
+flex: 1;
+font-size: 0.26rem;
+font-family: PingFang SC;
+font-weight: 400;
+color: #999999;
+margin-right: 0.3rem;
+}
+.more{
+  width: 100%;
+  text-align: center;
+  align-self: center;
+font-size: 0.26rem;
+font-family: PingFang SC;
+font-weight: 400;
+color: #999999;
+line-height: 1.2rem;
+}
+.moretwo{
+   width: 100%;
+   /* margin-bottom: 0.5rem; */
+  /* text-align: center; */
+}
+.jilu{
+  display: flex;
+  flex-direction: row;
+  width: 93%;
+  margin: 0 auto;
+  height: 1.39rem;
+  border-bottom: 0.01rem solid #E2E2E2;
+}
+.jilu:last-child{
+  border-bottom: none;
+}
+.jiluleft{
+  flex: 1;
+  /* margin-left: 0.3rem; */
+  margin-top: 0.3rem;
+  display: flex;
+  flex-direction: column;
+}
+.jiluleft text:first-child{
+
+font-size: 0.32rem;
+font-family: PingFang SC;
+font-weight: 400;
+color: #333333;
+}
+.jiluleft text:last-child{
+
+font-size: 0.26rem;
+font-family: PingFang SC;
+font-weight: 400;
+color: #999999;
+margin-top: 0.12rem;
+margin-left: 0.1rem;
+}
+.jiluright{
+ /* margin-right: 0.3rem; */
+  margin-top: 0.3rem;
+  
+font-size: 0.32rem;
+font-family: PingFang SC;
+font-weight: bold;
+color: #333333;
+}
+.content_boxcar{
+    width: 100%;
+     height: 100%;
+    overflow-y: scroll;
+}
+.cell-box-card {
+    background: white;
+    width: 100%;
+    /* height: 5.6rem; */
+    margin: 0 auto;
+   
+    display: flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+.topimg_card{
+    width: 94%;
+    margin-top: 0.3rem;
+    height: 3.8rem;
+    position: relative;
+    /* flex: 1; */
+   
+}
+.topimg_card .sdf{
+    width: 100%;
+    height: 100%;
+}
+.topimg_card img{
+    width: 100%;
+    height: 100%;
+}
+.topimg_card .footers_card{
+    width: 100%;
+    height: 0.7rem;
+    position: absolute;
+    bottom: 0;
+    border-radius:0 0 0.3rem 0.3rem;
+     text-align: right;
+    /* margin: 0.05rem 0.1rem; */
+    right: 0.4rem;
+    color: white;
+    font-size: 0.3rem;
+}
+
+.hea{
+    width: 100%;
+    margin-top: 0.4rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+}
+.hea view{
+    /* display: inline-block; */
+    flex: 1;
+    color: white;
+    font-weight: normal;
+    font-size: 0.3rem;
+    margin-left: 0.5rem;
+}
+
+.hea .spants{
+    flex: 1;
+    color: white;
+    font-weight: normal;
+    font-size: 0.3rem;
+    margin-right: 0.4rem;
+    text-align: right;
+}
+.hea view img{
+    width: 0.4rem;
+    height: 0.4rem;
+}
+.center{
+    width: 100%;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 1.6rem;
+    /* left: 23%; */
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+.linecenter{
+  text-align: center;
+    margin: auto;
+    width: 100%;
+    position: fixed;
+    top: 28%;
+}
+.linecenter image{
+    width: 2.3rem;
+    height: 2.3rem;
+}
+.linecenter view{
+    font-size: 0.32rem;
+    margin: 0.2rem auto;
+}

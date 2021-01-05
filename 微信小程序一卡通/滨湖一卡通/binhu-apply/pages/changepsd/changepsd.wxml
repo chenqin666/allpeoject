@@ -1,0 +1,20 @@
+
+<view class="page-todos">
+   <view class="chantitie">修改查询密码</view>
+			<view class="mainsall">
+				<view class="box">
+					<text> 原密码</text>
+					<input type="password"  password='true' value=""  placeholder="原始密码中X用0代替" bindinput='mobileinput' />
+				</view>
+				<view class="box">
+					<text>新密码</text>
+					<input type="password"  password='true' value="" placeholder="请填写6位新查询密码" bindinput='codeinput'/>
+				</view>
+				<view class="box">
+					<text>确认密码</text>
+				   <input type="password"  password='true' value="" placeholder="确认新查询密码" bindinput='passwordinput'/>
+				</view>
+			</view>
+			<view class="btn" bindtap="getAudit">提交</view>
+
+</view>

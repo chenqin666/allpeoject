@@ -1,0 +1,104 @@
+<!--pages/my/personalinfo/personalinfo.wxml-->
+
+ <!-- "usingComponents": {
+    "rolepicker": "../../../component/rolepicker/rolepicker"
+  }, -->
+
+<!-- <wxs src="../../common/common.wxs" module="tools" /> -->
+<view class='page'>
+
+
+ <view class='cell-box'  style='height:1.52rem;'>
+
+    <view class='cell-title'>
+      头像
+    </view>
+   <!-- {{tools.getProfile_url(logininfo.profile_url,"../../../assets/icon_header_default.png")}} -->
+    <image class='cell-head'  src='{{headerurl}}' mode='scaleToFill' lazy-load='true'>
+
+    </image>
+
+  </view>
+
+
+  <view class='cell-line' />
+
+
+
+
+  <view class='cell-box'  >
+
+    <view class='cell-title'>
+      昵称
+    </view>
+    <view class='cell-value' style='margin-right:0.24rem;'>
+      {{logininfo.username}}
+    </view>
+
+
+  </view>
+
+
+  <!-- <view class='cell-line'  />
+
+  <view class='cell-box' onTap='chang_mobile'>
+
+    <view class='cell-title'>
+      手机号
+    </view>
+    <view class='cell-value'>
+          {{logininfo.mobile}}
+    </view>
+    <image class='cell-arraw' src="../../../assets/icon_arraw_right.png" mode='scaleToFill'>
+
+    </image>
+
+
+  </view> -->
+
+
+  <view class='cell-line' />
+
+
+  <view class='cell-box' >
+
+    <view class='cell-title'>
+      性别
+    </view>
+    <view class='cell-value' style='margin-right:0.24rem;'>
+          {{logininfo.gender}}
+    </view>
+   
+
+  </view>
+
+  <view class='cell-line' />
+
+
+  <!-- <view class='contentView'>
+    <view class='label'>身份</view>
+    <input class='cell_item title' placeholder='placeholder' placeholder='请选择你的家长身份'  maxlength='10' value='{{role}}' disabled='true' onTap='showPickrole'>
+    </input>
+       <image  style='width:0.17rem;height:0.3rem;margin-right:0.2rem;' src='../../../assets/icon_arraw_right.png'></image>
+  </view>
+
+  <view class='cell-line' /> -->
+
+
+
+</view>
+
+
+
+
+<view class='topline' />
+
+
+<customerservice id='customerservice' time="{{time}}" mobile="{{mobile}}" hidden="{{hidden}}">
+</customerservice>
+
+
+ <rolepicker id='rolepicker'
+ bindpickrole="pickrole"
+  hidden="{{hidden}}"  >
+  </rolepicker>

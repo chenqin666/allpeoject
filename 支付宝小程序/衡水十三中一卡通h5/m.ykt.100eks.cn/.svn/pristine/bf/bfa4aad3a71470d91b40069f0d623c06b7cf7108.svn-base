@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html;charset=gbk">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>绑定一卡通账号</title>
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+    <link href="css/iosSelect.css" rel="stylesheet">
+    <script type="text/javascript">
+        var w = document.documentElement.clientWidth >= 1024 ? 1024 : document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = w / 750 * 100 + 'px';
+    </script>
+
+    <style>
+        body{
+            /* background-color: #d1effd; */
+        }
+        input:-webkit-autofill,
+        textarea:-webkit-autofill,
+        select:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 1000px white inset;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="warp" id="warp" style="position: relative" v-cloak>
+
+    <div class="school_box">
+        <img  class="school_img" src="./img/first_3.png">
+        <div class="title">绑定一卡通账号</div>
+    </div>
+    <div class="logos">
+        <img  class="logo_img" src="./img/first_1.png">
+        <div class="logotitle">绑定一卡通</div>
+    </div>
+    <div class="main">
+        <div class="box">
+            <span> <img  class="box_img" src="./img/first_5.png"></span>
+            <input type="text" value="" placeholder="请输入工号/学号" v-model="student_id">
+        </div>
+        <div class="box">
+            <span><img  class="box_img" src="./img/first_4.png"></span>
+            <input type="text" value="" placeholder="请输入真实姓名" v-model="names">
+        </div>
+
+        <!-- <div class="box">
+            <span><img  class="box_img" src="./img/first_2.png"></span>
+           <input type="password" value="" placeholder="请输入一卡通密码" v-model="passwprd">
+
+        </div> -->
+        <div class="btn" @click="loginbind">绑定</div>
+        <!-- <div class="box" style=" border-bottom: 1px solid transparent;">
+            <div class="btnhelp" > 
+                点击绑定表明你已同意
+                <a @click="go2help" style="color: #36a7fa;">《一卡通开放平台协议》</a>
+            </div>
+        </div> -->
+        
+    </div>
+    <div class="foter">
+        <div class="bottom_boxs" style="font-size: 0.26rem;">技术服务电话：19930381437，19930383437</div>
+        <div class="bottom_boxss" style="font-size: 0.26rem; color: gray;">
+            本系统由
+            <a href="http://m.fangao.100eks.com" style="color: #36a7fa;">凡高云校园</a>
+                提供技术支持
+        </div>
+    </div>
+
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/jquery-md5.js"></script>
+<script src="js/config.js"></script>
+<script src="js/iosSelect.js"></script>
+<script src="js/mint-ui.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+<script>
+    history.pushState({}, ""); 
+    window.onpopstate = function(event) {
+        //这里可以监听到浏览器的返回事件，并做你想做的事情，
+       location.href = "login.html";
+    };
+</script>
+<script>
+    new Vue({
+        el: '#warp',
+        data: {
+            student_id: '',
+            passwprd: '',
+            names:'',
+            originHeight:'',
+            screenHeight:'',
+            isOriginHeight:true,
+        },
+        created: function () {
+        },
+        mounted: function () {
+            const that=this;
+          
+        },
+        methods: {
+            
+           
+            /**
+             * 绑定
+             */
+             loginbind: function (type) {
+                
+                var that = this;
+                var request = {"code": ''};
+                var requesturl = root + yktlogin;
+               $.ajax({
+                    type: "post",
+                    url: requesturl,
+                    beforeSend: function (XMLHttpRequest) {
+                        // XMLHttpRequest.setRequestHeader("token", that.user.token);
+                    },
+                    data: {
+                        request: JSON.stringify(request)
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.code == 0) {
+                            this.carlist = data.data;
+                            sessionStorage.mid = this.carlist.mid;
+                            sessionStorage.token = this.carlist.token;
+                            if( this.carlist.check_card_status==0){
+                                window.location.href = "login.html";
+                            }
+                            else{
+                                window.location.href = "cards.html";
+                            }
+                        } else {
+                            that.errorTips(data.msg);
+                        }
+                    },
+                    error: function (data) {
+                        that.closeAnimation();
+                        that.errorTips('网络错误');
+                    }
+                });
+            },
+           
+            errorTips: function (msg) {
+                this.$toast(msg)
+            },
+            loadAnimation: function () {
+                this.$indicator.open({
+                    spinnerType: 'fading-circle'
+                });
+            },
+            closeAnimation: function () {
+                this.$indicator.close();
+            }
+        }
+    })
+</script>
+</body>
+</html>

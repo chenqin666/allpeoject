@@ -1,0 +1,60 @@
+
+<!--pages/login/login.wxml-->
+<view class='page'>
+<!-- style="background-image: url(../../img/first_3.png)" -->
+  <view class="school_box">
+    <image class="school_img" src="../../img/first_3.png"></image>
+    <text class="title">绑定一卡通账号</text>
+  </view>
+  <view class="logos">
+        <image  class="logo_img" src="../../img/yuanxin.png"></image>
+        
+        <!-- <image class="logo_img" src="{{school_icon}}"></image> -->
+        <view class="logotitle">绑定一卡通</view>
+    </view>
+
+  <!-- 工号/学号 -->
+  <view class='contentView' style='margin-top:40rpx'>
+    <image mode="aspectFit" src="../../img/first_5.png" class='img'></image>
+    <input class='input' type="number"  placeholder-class='placeholder' placeholder='请输入工号/学号' name="mobile" bindinput='mobileinput'></input>
+  </view>
+
+  <view class='lineView' style='margin-left:46rpx;margin-right:46rpx;'/>
+  
+   <!-- 真实姓名 -->
+  <view class='contentView' >
+    <image mode="aspectFit" src="../../img/first_4.png" class='img'></image>
+    <input class='input'  placeholder-class='placeholder' placeholder='请输入真实姓名' name="code" bindinput='codeinput'></input>
+   
+  </view>
+
+  <!-- <view class='lineView' style='margin-left:46rpx;margin-right:46rpx;'/> -->
+
+<!-- 密码 -->
+  <!-- <view class='contentView'>
+    <image mode="aspectFit" src="../../img/first_2.png" class='img'></image>
+    <input class='input' password='true'  placeholder-class='placeholder' placeholder='请输入一卡通密码' name="password" bindinput='passwordinput'></input>
+  </view> -->
+
+  <view class='lineView' style='margin-left:46rpx;margin-right:46rpx;'/>
+  <button class='btn' disabled="{{isdis}}" bindtap='go2login' style='margin-top:71rpx;'>绑定</button>
+   <view class="maintop" bindtap="cardsearch">
+         <text class="spans"> 忘记一卡通卡号？</text>
+          <text class="spansone"> 点击查询 </text>
+    </view>
+
+  
+  
+<!-- <button class='buttonCode' bindtap="go2recharge" > 立即充值</button> -->
+
+<view class="foter">
+    <view class="bottom_boxs" style="font-size: 26rpx;">技术服务电话：19930381437，19930383437</view>
+    <view class="bottom_boxss" style="font-size: 26rpx; color: gray;" bindtap='fgyun'>
+        本系统由
+        <text  style="color: #36a7fa;">凡高云校园</text>
+           
+            <!-- <navigator open-type="navigate" url="http://m.fangao.100eks.com" hover-class="navigator-hover">凡高云校园</navigator> -->
+         提供技术支持
+    </view>
+</view>
+</view>

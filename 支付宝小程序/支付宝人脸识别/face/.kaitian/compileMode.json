@@ -1,0 +1,77 @@
+{
+  "current": 13,
+  "modes": [
+    {
+      "page": "pages/cards/cards",
+      "title": "cards"
+    },
+    {
+      "page": "pages/mainsucess/mainsucess",
+      "title": "mainsucess"
+    },
+    {
+      "page": "pages/recharge/recharge",
+      "title": "recharge"
+    },
+    {
+      "page": "pages/details/details",
+      "title": "details"
+    },
+    {
+      "page": "pages/losscard/losscard",
+      "title": "loaded"
+    },
+    {
+      "page": "pages/changepsd/changepsd",
+      "title": "changepsd"
+    },
+    {
+      "page": "pages/searchall/searchall",
+      "title": "searchall"
+    },
+    {
+      "page": "pages/helps/helps",
+      "title": "helps"
+    },
+    {
+      "page": "pages/login/login",
+      "title": "login"
+    },
+    {
+      "page": "pages/cardsearch/cardsearch",
+      "title": "cardsearch"
+    },
+    {
+      "page": "pages/index/index",
+      "title": "index"
+    },
+    {
+      "page": "pages/apliy/apliy",
+      "title": "apliy"
+    },
+    {
+      "title": "首次登录",
+      "page": "pages/firstlogin/firstlogin"
+    },
+    {
+      "title": "首页",
+      "page": "pages/cards/cards"
+    },
+    {
+      "title": "欠费订单",
+      "page": "pages/recharge/recharge"
+    },
+    {
+      "title": "我的孩子",
+      "page": "pages/my/childlist/childlist"
+    },
+    {
+      "title": "绑定孩子",
+      "page": "pages/bindchild/bindchild"
+    },
+    {
+      "title": "绑定孩子详情",
+      "page": "pages/bindchild/childdetail/childdetail"
+    }
+  ]
+}

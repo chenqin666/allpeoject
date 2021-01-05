@@ -1,0 +1,38 @@
+
+<view class="page-todos">
+  <view class="chantitie">
+       <picker onChange="bindObjPickerChange" range="{{dataArr}}" range-key="name">
+          <view class="row">
+             交易记录
+            <image class="aimage" src="../../assets/xia.png" alt="" onTap="showmonth"></image>
+          </view>
+        </picker>
+        
+      
+    </view>
+    <view class="dealmainas" a:if="{{detailall.length>0}}">
+      <scroll-view scroll-y="true" style="height: 100%">
+        <view class="dealheader">{{monthy}}</view>
+        <view class="rowmain" a:for="{{detailall}}" a:key="index">
+            <view class="rowleft" >
+                <view>{{item.dscrp}}</view>
+                <text>{{item.opdt}}</text>
+            </view>
+            <view class="rowright">
+              <view a:if="{{item.opfare<0}}"> <text >{{item.opfare}}</text></view>
+                 <view a:else><text  style="color: #36a7fa">{{item.opfare}}</text></view>
+            </view>
+        </view>
+      </scroll-view>
+    </view>
+
+
+ <!-- && leaveStartShown==true -->
+    <view class="dealmainas"  a:if="{{detailall.length<=0}}">
+        <view class="dealheader">{{monthy}}</view>
+        <view class="rowmainsone">
+            暂无交易记录！
+        </view>
+    </view>
+
+</view>

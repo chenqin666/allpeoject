@@ -1,0 +1,41 @@
+<!--pages/parenthome/bindchild/bindchildcheck/bindchildcheck.wxml-->
+<wxs src="common.wxs" module="tools" />
+
+<view class='page'>
+  <view class='contentView'>
+    <!-- <view class='label'>绑定号：</view> -->
+    <input class='cell_item title' placeholder-class='placeholder' placeholder='请输入绑定号' onInput='inputname' maxlength='10'>
+
+    </input>
+    <image style='width:17rpx;height:30rpx;margin-left:20rpx;margin-right:20rpx;'></image>
+  </view>
+  <view class='hor_line'></view>
+
+   <view class='btn-box' style='margin-top:60rpx;background-color:#f6f6f6;'>
+      <button class='btn' bindtap='confirm' hover-class='navigator-hover'>
+        立即绑定
+      </button>
+    </view>
+
+<!-- <view style='font-size:26rpx;color:#333333;width:90%;margin-left:25rpx;margin-top:60rpx'>如不知道绑定号，请联系微信昵称为“{{bind_by}}”的家长</view> -->
+
+<view style='font-size:26rpx;color:#333333;width:90%;margin-left:25rpx;margin-top:60rpx;margin-bottom:18rpx;'>如不知道绑定号，请联系下方已绑定该孩子的家长</view>
+
+    <view class='hor_line'></view>
+<block wx:for='{{parent_list}}' wx:index="index" wx:key="item">
+      <view class='item' bindtap='onItemClick' data-item='{{item}}'>
+
+        <view class='head-box'>
+          <image class='head' src='{{tools.getProfile_url(item.profile_url,"../../../images/icon_header_default.png")}}' lazy-load='true'></image>
+        </view>
+        <view class='text-box'>
+          <view class='name'> {{"家长微信昵称："+item.nickname}}</view>
+          <view class='role'> {{"家长身份："+item.relation}}</view>
+        </view>
+      </view>
+      <view class='hor_line'></view>
+    </block>
+</view>
+
+
+  <view class='topline ' />

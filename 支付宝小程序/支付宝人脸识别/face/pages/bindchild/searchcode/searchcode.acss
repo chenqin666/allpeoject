@@ -1,0 +1,130 @@
+/* pages/parenthome/bindchild/searchcode/searchcode.wxss */
+.contentView {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 90rpx;
+  align-items: center;
+  background-color: #fff;
+
+}
+.cell_top_item{
+  width: 100%;
+  height: 91rpx;
+  display: flex;
+  flex-direction: column;
+
+  justify-content:center;
+}
+.title_top{
+  font-size: 32rpx;
+  color: #333333;
+  margin-left: 24rpx;
+}
+
+
+.cell_item{
+  flex:1;
+  height: 91rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right:12rpx; 
+}
+.label{
+  font-size: 32rpx;
+  color: #333333;
+  margin-left: 24rpx;
+  padding-right:10rpx; 
+
+}
+.title{
+   flex:1;
+  font-size: 32rpx;
+  color: #333333;
+  text-align: right;
+}
+
+
+
+.placeholder{
+  font-size: 32rpx;
+  color: #999999;
+  text-align: right;
+}
+
+/* 列表弹框
+ */
+.popLayer{
+  background-color: #B3B3B3;
+  /* position: absolute; */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  -moz-opacity: 0.5;
+  opacity:.60;
+  filter: alpha(opacity=80);/* 只支持IE6、7、8、9 */
+}
+
+.totips{
+    top: 14%;
+    border-radius: 10rpx;
+    width: 84%;
+    height: auto;
+    /* overflow-y: scroll; */
+    /* height: 320rpx; */
+    position: fixed;
+    left: 8%;
+    background-color: #FFFFFF;
+    z-index: 15;
+    
+}
+.p1{
+  width: 100%;
+  text-align: center;
+    font-size: 33rpx;
+    margin: 30rpx auto;
+    line-height: 40rpx;
+}
+.tipcontent{
+   width: 90%;
+   margin: 30rpx auto;
+   height: 140rpx;
+   /* background: red; */
+   border-bottom: 1rpx solid #999999;
+}
+.tiptop{
+ color: gray;
+  font-size: 26rpx;
+  
+}
+.callcontert{
+  display: flex;
+  flex-direction: row;
+  line-height: 40rpx;
+  margin-top: 15rpx;
+}
+.callleft{
+flex: 1;
+ font-size: 28rpx;
+}
+.callright{
+  color: white;
+  font-size: 28rpx;
+width: 120rpx;
+height: 50rpx;
+line-height: 50rpx;
+border-radius: 10rpx;
+text-align: center;
+background: rgba(42,177,243,1);
+}
+.tipfooters{
+  width: 90%;
+  color: gray;
+  font-size: 28rpx;
+    margin: 30rpx auto;
+    line-height: 40rpx;
+}

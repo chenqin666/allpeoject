@@ -1,0 +1,29 @@
+/**
+ * Created by xindao-xgd on 2018/9/28.
+ */
+//通用接口地址设置
+
+const root = "http://api.ykt.100eks.cn/";
+
+const yktlogin="gzxs.member.execute.login";//登录
+const yktcards="gzxs.member.bind.cards";//卡片列表
+const yktbindcard="gzxs.member.binding.cards";//绑定卡片
+const yktunbind="gzxs.member.unbund.card";//解绑一卡通
+
+const yktpay="gzxs.member.update.info";//充值
+
+const fdsmemberinfoquery="gzxs.member.info.query";//获取用户信息
+const fdscashierexecutepayment="gzxs.cashier.execute.payment";//发起支付
+const gyxsschoollist="gzxs.execute.school";//学校列表
+const auditresult="gzxs.member.query.audit";//审核结果
+const advice="gzxs.advice.note.query";//通知书
+
+
+
+// 100eks阿里云配置信息
+const accessKeyId= 'LTAIGrq1Dzk3QcuJ';
+const accessKeySecret= 'NPrubRHPgDVABi30RBRtd9yghZqA3F';
+
+function getPort(){
+    return port;
+}

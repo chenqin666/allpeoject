@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html;charset=gbk">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <title>欢迎使用</title>
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/submitfillinfo.css" rel="stylesheet">
+    <link href="css/iosSelect.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/mint-ui.css">
+    <script type="text/javascript">
+        var w = document.documentElement.clientWidth >= 1024 ? 1024 : document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = w / 750 * 100 + 'px';
+    </script>
+    <style>
+        body {
+            background-color: #f6f6f6;
+        }
+
+        input:-webkit-autofill,
+        textarea:-webkit-autofill,
+        select:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 1000px white inset;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+      
+    </style>
+</head>
+<body style="background: #f9f9f9">
+<div class="warp" id="warp" v-cloak style="position: relative;height: 100%;width: 100%;">
+    <div class="content_box">
+        <div class="cell-box">
+            <div class="topimg"> 
+                <img src="./img/card.png" class="sdf" alt="">
+                <div class="hea">
+                    <span>
+                        <!-- <img src="./img/first_1.png" alt=""> -->
+                        <!-- 衡水第十三中学 -->
+                        {{school_name}}
+                    </span>
+                    <span>
+                        <img src="./img/head.png" alt="" style="width: 0.3rem; height: 0.3rem;">
+                        {{cardnumber}}
+                    </span>
+                </div>
+                <div class="center">
+                   <p class="pscen"> ¥<span style="font-size: 0.6rem">{{datalist.fee}}</span></p>
+                    <span class="footcen">(以上金额由于网络原因可能延迟更新)</span>
+                </div>
+                <div class="footers" @click="search" v-if="datalist.wait_fee>0">
+                   <p >有<span style="color: yellow">¥{{datalist.wait_fee}}元</span>未领取</p>
+                </div>
+            </div>
+            <div class="chongzhi">
+                <div class="left" @click="leftmoney">
+                    <img src="./img/chongzhi.png" alt="">
+                    <span>充值</span>
+                </div>
+                <div class="right" @click="rightmoney">
+                    <img src="./img/jiaoyi.png" alt="">
+                    <span>交易明细</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mainall">
+            <!--<div class="maintop" @click="realcard">
+                <img src="./img/guashi.png" alt="" class="aimg">
+                <div class="mainright">
+                  <span class="spans">卡挂失</span>
+                  <img src="./img/you.png" alt="">
+                </div>
+            </div>-->
+            <!--<div class="maintop" @click="realpsaaword">
+                <img src="./img/xiugai.png" alt="" class="aimg" style=" width: 0.35rem;
+                height: 0.4rem;">
+                <div class="mainright">
+                    <span class="spans">
+                            修改密码
+                    </span>
+                    <img src="./img/you.png" alt="">
+                </div>
+            </div>-->
+            <div class="maintop" @click="untrying">
+                <img src="./img/jiebang.png" alt="" class="aimg">
+                <div class="mainright">
+                    <span class="spans">
+                            解绑一卡通
+                    </span>
+                    <img src="./img/you.png" alt="">
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    <div class="bottom_box" style="font-size: 0.26rem; color: gray;">
+        本系统由
+        <a href="http://m.fangao.100eks.com" style="color: #36a7fa;">凡高云校园</a>
+         提供技术支持
+    </div>
+   <!-- <div  v-if="totip==true" class="totips">
+       <p class="p1">解绑校园卡</p>
+        <p class="p2">解绑后将无法使用校园卡相关功能!</p>
+        <p class="p3">
+            <input type="text" name="" id="" placeholder="请输入校园卡密码" v-model="jiebangpass">
+        </p>
+        <div class="tofooter">
+            <span style="border-right: 0.5px solid #dedede;" @click="confirm()">确定</span>
+            <span @click="cancel()">取消</span>
+        </div>
+   </div> -->
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/jquery-md5.js"></script>
+<script src="js/config.js"></script>
+<script src="js/iosSelect.js"></script>
+<script src="js/data.js"></script>
+<script src="js/citys.json"></script>
+<link rel="stylesheet" href="css/mint-ui.css">
+<script src="https://www.promisejs.org/polyfills/promise-6.1.0.js"></script>
+<script src="http://gosspublic.alicdn.com/aliyun-oss-sdk-4.3.0.min.js"></script>
+
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+<script src="js/mint-ui.js"></script>
+
+<script>
+    new Vue({
+        el: '#warp',
+        data: {
+            totip:false,//弹框
+            jiebangpass:'',//解绑密码
+            user:'',
+            originHeight: '',
+            screenHeight: '',
+            isOriginHeight: true,
+            cardnumber:'',
+            childidnumber:'',
+            cardmid:'',
+            stunames:'',
+            datalist:'',
+            school_name:'',
+        },
+        created: function () {
+        },
+        mounted: function () {
+            
+            const that = this;
+            // 卡片信息
+            this.cardnumber=sessionStorage.snumber
+            this.childidnumber=sessionStorage.childid
+            this.stunames=sessionStorage.stu_name
+            this.cardmid=sessionStorage.mid
+            this.school_name=sessionStorage.school_name
+            that.originHeight = document.documentElement.clientHeight;
+
+            window.onresize = function () {
+                that.screenHeight = document.documentElement.clientHeight;
+                if (that.originHeight - that.screenHeight > 60) { //这里以防万一改了下判断形式，当屏幕高度减少了60px以上时才隐藏footer
+                    that.isOriginHeight = false;
+                } else {
+                    that.isOriginHeight = true;
+                }
+            }
+            // that.initEventListener();
+            // 卡片详情
+            this.carddetails()
+        },
+        methods: {
+            // 充值
+            leftmoney(){
+                window.location.href = 'recharge.html';
+            },
+            // 交易明细
+            rightmoney(){
+                this.errorTips('暂未开通,不能进入！');
+                // window.location.href = 'details.html';
+            },
+            // 挂失卡
+            realcard(){
+                window.location.href = 'losscard.html'
+            },
+             // 修改密码
+            realpsaaword(){
+                window.location.href = 'changepsd.html'
+            },
+            // 余款查询
+            search(){
+                window.location.href = 'searchall.html'
+            },
+            // 解绑一卡通
+            untrying(){
+                this.$messagebox.prompt('请输入校园卡密码', {
+                    inputType : 'password',
+                    title: '解绑校园卡',
+                    inputPlaceholder:'请输入校园卡密码',
+                    message: '解绑后将无法使用校园卡相关功能',
+                    inputValidator: (val) => {
+                        if (val === null) {
+                        return true;//初始化的值为null，不做处理的话，刚打开MessageBox就会校验出错，影响用户体验
+                        }
+                        return !(val.length <2)
+                    }, inputErrorMessage: '请输入校园卡密码'
+                    }).then( (val) => {
+                        this.jiebangpass=val.value
+                        this.confirmpsd()
+                        console.info('confirm,value is' + val.value)
+                    }).catch(() => {
+                    console.info('cancel')
+                    })
+            },
+           
+            // 确定弹框
+            confirmpsd(){
+                var that = this;
+                if(!that.jiebangpass){
+                    that.errorTips('请输入密码');
+					return false;
+                }
+                var request = {
+                    "mid": that.cardmid,
+                    "card_num":that.cardnumber,
+                    "stu_name":that.stunames,
+                    "password":that.jiebangpass,
+                }
+                var requesturl = root + yktunbind;
+                that.loadAnimation();
+                $.ajax({
+                        type: "post",
+                        url: requesturl,
+                        beforeSend: function (XMLHttpRequest) {
+                           XMLHttpRequest.setRequestHeader("token", sessionStorage.token);
+                        },
+                        data: {
+                            request: JSON.stringify(request)
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            that.closeAnimation();
+                            if (data.code == 0) {
+                                that.errorTips(data.msg);
+                                window.location.href = 'cards.html';
+                            }else {
+                                that.errorTips(data.msg);
+                            }
+                        },
+                        error: function () {
+                            that.closeAnimation();
+                            that.errorTips('网络错误,请重试！');
+                        }
+                    });
+            },
+            initEventListener: function () {
+                document.body.addEventListener('focusout', function () {
+                    window.scrollTo(0, 0);
+                })
+                document.addEventListener('touchstart', touch, false);
+                document.addEventListener('touchmove', touch, false);
+                document.addEventListener('touchend', touch, false);
+                function touch(event) {
+                    var event = event || window.event;
+                    var oInp = document.getElementById("inp");
+                    switch (event.type) {
+                        case "touchstart":
+                            break;
+                        case "touchend":
+                            window.scrollTo(0, 0);
+                            break;
+                        case "touchmove":
+                            //                        event.preventDefault();
+
+                            break;
+                    }
+
+                }
+            },
+            
+            /**
+             * 卡片详情
+             */
+             carddetails: function (type) {
+                var that = this;
+                var request = {
+                    "mid": sessionStorage.mid,
+                    "card_num":sessionStorage.snumber,
+                    "stu_name":sessionStorage.stu_name
+                }
+                var requesturl = root + yktdetail;
+                that.loadAnimation();
+                setTimeout(function () {
+                    $.ajax({
+                        type: "post",
+                        url: requesturl,
+                        beforeSend: function (XMLHttpRequest) {
+                           XMLHttpRequest.setRequestHeader("token", sessionStorage.token);
+                        },
+                        data: {
+                            request: JSON.stringify(request)
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            that.closeAnimation();
+                            if (data.code == 0) {
+                            that.datalist=data.data
+                            }else {
+                                that.errorTips(data.msg);
+                            }
+                        },
+                        error: function () {
+                            that.closeAnimation();
+                            that.errorTips('网络错误,请重试！');
+                        }
+                    });
+
+                }, 1000)
+            },
+
+            errorTips: function (msg) {
+                this.$toast(msg)
+            },
+            loadAnimation: function () {
+                this.$indicator.open({
+                    spinnerType: 'fading-circle'
+                });
+            },
+            closeAnimation: function () {
+                this.$indicator.close();
+            }
+        }
+    })
+</script>
+
+
+</body>
+</html>
+<style scoped>
+  .mint-msgbox {
+    top: 45%;
+    border-radius: 15px;
+    width: 70%;
+
+}
+.mint-msgbox-btn{
+    font-size: 17px;
+}
+.mint-msgbox-input input{
+    /* height: 20px; */
+    width: 90%;
+    margin: 0 0.2rem;
+    /* place-content: '请输入校园卡密码'; */
+    
+}
+.mint-msgbox-title{
+    font-weight: normal;
+    font-size: 0.3rem;
+}
+.mint-msgbox-message{
+    font-size: 0.27rem;
+    line-height: 0.3rem;
+}
+
+.mint-msgbox-input input{
+    font-size: 0.28rem;
+    padding: 0.15rem;
+}
+</style>

@@ -1,0 +1,61 @@
+<!--pages/my/childlist/childlist.wxml-->
+<!-- "usingComponents": {
+    "dialog": "../../../component/dialog/dialog"
+  }, -->
+<view class='page' style=''>
+  <scroll-view a:if="{{list&&list.length > 0}}"  scroll-y="true" style='flex:1;background-color:#f6f6f6;height:89%;margin-bottom:1.3rem;'>
+    <view a:for='{{list}}' style='display:inline-block;' a:index="index" a:item:="item">
+      <view class='item'>
+      <!-- {{logininfo.last_login_student.child_mid==item.child_mid?"childitemcheck":"childitemnormal"}} -->
+        <view class='childitemcheck' onTap='onItemClick' data-item='{{item}}'>
+          <view class='head-box'>
+          <!-- src='{{tools.getProfile_url(item.profile_url,"../../../assets/icon_header_default.png")}} -->
+            <image class='head' src="../../../assets/icon_header_default.png" lazy-load='true'></image>
+          </view>
+
+          <view class='content-box'>
+            <view class='name'>
+              <view>
+                {{item.username}}
+              </view>
+              <!-- {{logininfo.last_login_student.child_mid==item.child_mid}} -->
+              <view class="dangqian">当前绑定</view>
+            </view>
+            <view class='class'>
+              {{item.school_name+" "+item.grade_name+item.class_name}}
+            </view>
+
+          </view>
+          <view class='btn-jiechu' catchtap='onbtnClick' data-index='{{index}}' hover-class='navigator-hover'> 解除绑定</view>
+          <!-- <image src='../../../assets/icon_child_checked.png' style='position:absolute; width:0.6rem;height:0.6rem;right:0;bottom:0;display:{{logininfo.last_login_student.child_mid==item.child_mid?"block":"none"}}'></image> -->
+<!-- <image src='../../../assets/icon_child_checked.png' style='position:absolute; width:0.6rem;height:0.6rem;right:0;bottom:0;display:"block"}}'></image> -->
+
+
+
+        </view>
+
+      </view>
+    </view>
+  </scroll-view>
+
+
+  <view a:if="{{list && list.length == 0}}" class='blank-box' style='background-color:#f6f6f6;margin-top:-0.5rem;'>
+
+ <!-- <image class='blank-image' src='../../../assets/icon_blank_child.png'>
+  </image> -->
+  <view class='blank-text' style='width:5.7rem'> 您还未绑定孩子，请绑定您的孩子</view>
+  </view>
+
+
+</view>
+
+ <!-- <view class='btn-box'  style='position: fixed;bottom: 0;'>
+   <view class='btn-line'></view>
+    <button class='btn' onTap='onClickAdd' hover-class='navigator-hover'>
+      添加绑定孩子
+    </button>
+  </view> -->
+
+
+<!-- <dialog id='dialog' title='' content='{{alertcontent}}' cancelText="取消" confirmText='解除绑定' bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent">
+</dialog> -->

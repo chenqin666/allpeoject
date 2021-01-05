@@ -1,0 +1,26 @@
+<view class="page-add-todo">
+
+   <image mode="widthFix" src="../../assets/bg_splas.png" class='img'></image>
+
+  <!-- <view class='apply-box'> -->
+     <!-- a:if="{{(!hasUserInfo && canIUse&&!ishidden)||!ishidden}}"  -->
+  <!-- <image class="apply-btn" a:if="{{!hasUserInfo}}"
+       mode="aspectFit" src="../../assets/btn_enter.png"></image>
+  </view>  -->
+ 
+
+ <view a:if="{{isconfirm==true}}">
+    <view class="popLayer"></view>
+     <view class="models">
+      系统维护中，请稍后再试！
+     </view>
+  </view>
+
+<view class='apply-box'>
+<!-- a:if="{{(!hasUserInfo && canIUse&&!ishidden)||!ishidden}}"  style="opacity:0;" -->
+  <button class="apply-btn"  a:if="{{hasUserInfo}}" type="primary"
+     open-type="getAuthorize" onGetAuthorize="onGetAuthorize" onError="onAuthError" 
+     scope='userInfo'> 进入一卡通</button>
+</view>
+
+</view>

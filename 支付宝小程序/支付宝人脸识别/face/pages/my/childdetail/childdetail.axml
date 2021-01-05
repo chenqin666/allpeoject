@@ -1,0 +1,73 @@
+<!--pages/my/childdetail/childdetail.wxml-->
+  <!-- "usingComponents": {
+    "dialog": "../../../component/dialog/dialog",
+    "rolepicker": "../../../component/rolepicker/rolepicker"
+  }, -->
+<!-- <wxs src="../../common/common.wxs" module="tools" /> -->
+<view class='page'>
+<view class='child-box'>
+    <image class='child-image' src='{{tools.getProfile_url(selectedchild.profile_url,"../../../assets/icon_header_default.png")}}' lazy-load='true'></image>
+
+    <view class='content-box'>
+      <view class='title'>
+      {{selectedchild.username}}
+      </view>
+      <view class='description'>
+        {{selectedchild.school_name + " "+ selectedchild.grade_name+selectedchild.class_name }}
+      </view>
+        <!-- <view class='description'> -->
+        <!-- {{"绑定号："+selectedchild.student_bind_no}} -->
+      <!-- </view> -->
+       <view class='description' >
+        {{"学生编号："+selectedchild.member_sn}}
+      </view>
+    </view>
+  </view>
+
+
+<view class='hor_line' />
+<view style='font-size:0.26rem;color:#333333;width:90%;height:0.8rem;line-height:0.8rem;margin-left:0.25rem;'>已绑定该孩子的家长</view>
+<view class='hor_line' />
+<scroll-view scroll-y="true" style='height:62%;'>
+<block a:if="{{parent_list&&parent_list.length>0}}" a:for='{{parent_list}}' a:index="index" a:key="item">
+  
+      <view class='item' onTap='onItemClick' data-item='{{item}}'>
+
+        <view class='head-box'>
+          <image class='head' src='{{tools.getProfile_url(item.profile_url,"../../../assets/icon_header_default.png")}}' lazy-load='true'></image>
+        </view>
+        <view class='text-box'>
+          <view class='name'> {{"家长微信昵称："+item.nickname}}</view>
+          <view class='role'> {{"家长身份："+item.relation}}</view>
+        </view>
+
+        <view a:if="{{item.is_self==1}}" class='btn_edit_role' onTap='showPickrole'>编辑身份</view>
+      </view>
+      <view class='hor_line'></view>
+    
+    </block>
+  </scroll-view>
+
+
+
+</view>
+
+
+ <view class='btn-box'  style='position: fixed;bottom: 0;'>
+   <view class='btn-line'></view>
+    <button class='btn' onTap='onbtnClick' hover-class='navigator-hover'>
+      解除绑定
+    </button>
+  </view>
+
+<dialog id='dialog' title='' content='{{alertcontent}}' cancelText="取消" confirmText='解除绑定' bind:cancelEvent="_cancelEvent" bind:confirmEvent="_confirmEvent">
+</dialog>
+
+
+ <rolepicker id='rolepicker'
+ bindpickrole="pickrole"
+  hidden="{{hidden}}"  >
+  </rolepicker>
+
+  <view class='topline ' />
+

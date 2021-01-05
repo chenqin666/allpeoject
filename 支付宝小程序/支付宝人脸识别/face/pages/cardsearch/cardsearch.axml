@@ -1,0 +1,25 @@
+
+<view class="page-todos">
+   <view class="chantitie">卡号查询</view>
+			<view class="mainsall">
+				<view class="box">
+					<text> 姓名</text>
+					<input type="text" value=""  placeholder="请输入姓名" onInput='nameinput' />
+				</view>
+				<view class="box">
+					<text>身份证号</text>
+					<input type="text" value="" placeholder="请输入身份证号" onInput='codeinput'/>
+				</view>
+				
+			</view>
+			<!-- <view class="btn" onTap="getAudit">查询</view> -->
+      <button class='btn' onTap='getAudit' style='margin:0.3rem auto;'>查询</button>
+
+      
+      <view class="cardlist" a:if="{{returnnumber!=''}}" >
+          <text>一卡通卡号：</text>
+          <text>{{returnnumber}}</text>
+          <text class="asdf" onTap="call">点击复制</text>
+        </view>
+
+</view>

@@ -1,0 +1,81 @@
+/* pages/login/login.wxss */
+.page {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /* background-color: #fff; */
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+}
+.chantitie{
+   width: 100%;
+   position: fixed;
+   font-weight: bold;
+   top: 0;
+    font-size: 'PingFangSC-Regular';
+    background-color: #ffffff;
+    border-bottom: 0.5px solid #dedede;
+    text-align: center;
+    font-size: 0.36rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+}
+.tishi{
+    margin-top: 1.5rem;
+    color: red;
+    padding: 0 0.3rem;
+    font-size: 0.36rem;
+}
+.dealmain{
+    margin-top: 0.3rem;
+    width: 100%;
+    /* height: 3rem; */
+    background: white;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+.dealmain .rowmain{
+    flex: 1;
+    height: 1.1rem;
+    border-bottom: 0.5px solid #dedede;
+    font-size: 0.3rem;
+}
+.dealmain .rowtop{
+    width: 100%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    /* background: red; */
+    font-size:0.3rem; 
+    padding: 0 0.3rem;
+    border-bottom: 0.5px solid #dedede;
+    display: flex;
+    flex-direction: row;
+}
+
+.rowtop .one{
+    flex: 1;
+    margin-left: 0rem;
+    font-size: 0.3rem;
+}
+.rowtop .two{
+     /* flex: 1; */
+     margin-right: 0.6rem;
+    float: right;
+}
+
+.rowmain .rowleft{
+    float: left;
+    margin: 0.2rem 0.3rem;
+    font-size: 0.3rem;
+}
+.rowmain .rowleft text{
+    font-size: 0.26rem;
+    color: gray;
+    margin-top: 0.1rem;
+    }
+.rowmain .rowright{
+    float: right;
+    margin: 0.2rem 0.4rem;
+}

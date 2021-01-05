@@ -1,0 +1,8 @@
+
+<!--pages/login/login.wxml-->
+<view class='page'>
+<web-view src="https://m.fangao.100eks.com">
+</web-view>
+<!-- <web-view src="{{url}}"></web-view>
+<view class='topline' /> -->
+</view>

@@ -1,0 +1,37 @@
+
+<view class="page-todos">
+   <view class="chantitie">卡号查询</view>
+			<view class="mainsall">
+      <view class="box">
+			     <picker bindchange="bindObjPickerChange" value="{{index}}" range="{{array}}">
+                	<text style="margin-top:10rpx;"> 选择年级</text>
+                  <view class="rightimg" wx:if="{{monthyfirst==''}}" onTap="showmonth">
+                     请选择年级
+                  </view>
+                  <view class="rightimgone" wx:else>
+                    <view> {{monthyfirst}}</view>
+                  </view>
+            </picker>
+				</view>
+        <view class="box">
+					<text>所在班级</text>
+					<input type="number" value="" placeholder="请输入数字" bindinput='codeinput'/>
+				</view>
+				<view class="box">
+					<text> 输入姓名</text>
+					<input type="text" value=""  placeholder="请输入姓名" bindinput='nameinput' />
+				</view>
+				
+				
+			</view>
+      <view class="reds">安卓用户在输入姓名时,请不要使用手写输入法</view>
+			<view class="btn" bindtap="getAudit">查询</view>
+
+<view class="cardlist"  wx:if="{{returnnumber!=''}}">
+    <span>一卡通卡号：</span>
+    <span>{{returnnumber}}</span>
+    <span style='color:#2ab1f3;padding:25rpx;' bindtap="call">点击复制</span>
+  </view>
+
+
+</view>

@@ -1,0 +1,46 @@
+/* pages/my/setting/setting.wxss */
+.page{
+  position: fixed;
+  width:100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.cell-box{
+  width: 100%;
+  height: 0.9rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.cell-title{
+  margin-left: 0.24rem;
+  font-size: 0.3rem;
+  color:#333333;
+}
+
+.cell-arraw{
+  margin-right: 0.24rem;
+  width:0.17rem;
+  height: 0.3rem;
+}
+
+.cell-line{
+  width: 100%;
+  margin-left: 0.24rem;
+  background-color: #dedede;
+  height: 0.01rem;
+
+   -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5); /*缩放*/
+}
+
+

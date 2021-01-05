@@ -1,0 +1,94 @@
+.page-todos {
+ position: fixed;
+  width: 100%;
+  height: 100%;
+  /* background-color: #fff; */
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+}
+.onedealmainas{
+  
+background: #FFFFFF;
+  width: 100%;
+  /* height: 340rpx; */
+  margin: 0 auto;
+  text-align: center;
+   border-top: 1rpx solid #DEDEDE;
+    border-bottom: 1rpx solid #DEDEDE;
+}
+.recenter{
+  /* border-radius: 50%; */
+  text-align: center;
+  margin: 60rpx auto;
+  width: 400rpx;
+  height: 400rpx;
+  
+  /* border: 10rpx solid linear-gradient(180deg, #2AB1F3, #C5ECFF); */
+  /* background:#2AB1F3; */
+}
+.reimg{
+  /* border: 3rpx solid white; */
+   text-align: center;
+  width:400rpx;
+  height:400rpx;
+  border-radius: 20rpx;
+  /* margin: 5rpx auto; */
+}
+.lineviews{
+  display: flex;
+  flex-direction: row;
+  border-top: 1rpx solid #DEDEDE;
+  height: 100rpx;
+  line-height: 100rpx;
+  
+background: #FFFFFF;
+
+font-size: 32rpx;
+font-family: PingFang SC;
+font-weight: 400;
+color: #000000;
+}
+.lineleft{
+margin-left: 20rpx;
+}
+.lineright{
+margin-right: 20rpx;
+text-align: right;
+flex: 1;
+}
+.dealmainas{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.img{
+   text-align: center;
+  margin-top: 300rpx;
+  width: 240rpx;
+  height: 200rpx;
+}
+.dealmainas .rowmains{
+    font-size: 32rpx;
+font-family: PingFang SC;
+font-weight: 400;
+color: #000000;
+ margin-top: 30rpx;
+}
+.foter{
+  position: fixed;
+  bottom: 0rpx;
+    width: 100%;
+    margin: 10rpx auto;
+    font-size: 26rpx;
+    color: gray;
+    text-align: center;
+}
+.bottom_boxs{
+    width: 100%;
+    margin: 10rpx auto;
+    font-size: 26rpx;
+    color: gray;
+    text-align: center;
+}

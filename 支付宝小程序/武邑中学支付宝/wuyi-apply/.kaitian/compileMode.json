@@ -1,0 +1,53 @@
+{
+  "current": 10,
+  "modes": [
+    {
+      "page": "pages/cards/cards",
+      "title": "cards"
+    },
+    {
+      "page": "pages/mainsucess/mainsucess",
+      "title": "mainsucess"
+    },
+    {
+      "page": "pages/recharge/recharge",
+      "title": "recharge"
+    },
+    {
+      "page": "pages/details/details",
+      "title": "details"
+    },
+    {
+      "page": "pages/losscard/losscard",
+      "title": "loaded"
+    },
+    {
+      "page": "pages/changepsd/changepsd",
+      "title": "changepsd"
+    },
+    {
+      "page": "pages/searchall/searchall",
+      "title": "searchall"
+    },
+    {
+      "page": "pages/helps/helps",
+      "title": "helps"
+    },
+    {
+      "page": "pages/login/login",
+      "title": "login"
+    },
+    {
+      "page": "pages/cardsearch/cardsearch",
+      "title": "cardsearch"
+    },
+    {
+      "page": "pages/index/index",
+      "title": "index"
+    },
+    {
+      "page": "pages/apliy/apliy",
+      "title": "apliy"
+    }
+  ]
+}

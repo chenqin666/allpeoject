@@ -1,0 +1,34 @@
+<!--pages/login/login.wxml-->
+<view class='page'>
+
+  <view>
+    <text class="loginTitle">手机快速注册</text>
+  </view>
+
+
+  <!-- 用户名 -->
+  <view class='contentView' style='margin-top:1rem'>
+    <input class='input'   placeholder-class='placeholder' placeholder='请输入手机号' name="mobile" onInput='mobileinput'></input>
+  </view>
+
+ 
+   <!-- 验证码 -->
+  <view class='contentView' >
+    <input class='input'  placeholder-class='placeholder' placeholder='请输入验证码' name="code" onInput='codeinput'></input>
+    <view class="lineView"></view>
+    <view class='validCode' onTap='getcode' >{{msg}}</view>
+  </view>
+
+
+  <button class='buttonCode' onTap='go2login' style='margin-top:0.6rem'>登录</button>
+
+
+<!-- <view class='help-box'>
+  <text class='help' onTap='onHelpClick' >使用帮助说明</text>
+  </view> -->
+<view class="footers" onTap="tohelp">
+同意
+<text style="color:#2AB1F3">《凡高智慧校园服务协议》</text>  
+</view>
+
+</view>

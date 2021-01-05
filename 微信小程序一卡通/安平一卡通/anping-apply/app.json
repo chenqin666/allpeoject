@@ -1,0 +1,28 @@
+{
+  "pages": [
+   "pages/index/index",
+    "pages/login/login",
+    "pages/cards/cards",
+    "pages/hhh/hhh",
+    "pages/mainsucess/mainsucess",
+    "pages/searchall/searchall",
+    "pages/recharge/recharge",
+    "pages/images/images",
+    
+    "pages/details/details",
+    "pages/dingdetail/dingdetail",
+    "pages/losscard/losscard",
+    "pages/changepsd/changepsd",
+    "pages/helps/helps",
+    "pages/detailrech/detailrech",
+    "pages/cardsearch/cardsearch"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "一卡通充值",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

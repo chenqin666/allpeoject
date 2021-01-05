@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html;charset=gbk">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <title>交易记录</title>
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/element-ui.css">
+    <script type="text/javascript">
+        var w = document.documentElement.clientWidth >= 1024 ? 1024 : document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = w / 750 * 100 + 'px';
+    </script>
+    <style>
+        input:-webkit-autofill,
+        textarea:-webkit-autofill,
+        select:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 1000px white inset;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body style="background: #f9f9f9">
+<div class="warp" id="warp" v-cloak >
+    <div class="chantitie">
+        交易记录
+        <img src="./img/xia.png" alt=""  @click="showmonth">
+        <mt-popup v-model="popupVisible"  position="bottom">
+            <div class="picker-toolbar">  
+                <span class="mint-datetime-cancel" @click="cancels">取消</span>  
+                <span class="mint-datetime-confirm" @click="select">确定</span>  
+            </div>  
+            <mt-picker ref='pickerObj' :slots="slots" valueKey="name"></mt-picker>
+            <mt-picker :dataArr="dataArr"  />
+        </mt-popup>
+    </div>
+    <div class="dealmainas">
+        <p class="dealheader">7月</p>
+        <div class="rowmain">
+            <div class="rowleft">
+                <p>餐费支出(思源堂教工一号机)</p>
+                <span>2019-07-05 12:02:92</span>
+            </div>
+            <div class="rowright">
+                <span >-1.50</span>
+                <!-- <span style="color: #36a7fa">+1000</span> -->
+            </div>
+        </div>
+        
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/jquery-md5.js"></script>
+<script src="js/config.js"></script>
+<script src="js/previewImage.min.js"></script>
+<script src="js/element-ui.js"></script>
+<script src="js/iosSelect.js"></script>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+<script src="js/mint-ui.js"></script>
+
+<script>
+    new Vue({
+        el: '#warp',
+        data: {
+            user: '',
+            originHeight: '',
+            screenHeight: '',
+            isOriginHeight: true,
+            popupVisible:false,
+            detailall: [],
+            dataArr:[],
+            slots:[],
+            pickerVal:'',//获取月份
+        },
+        created: function () {
+        },
+        mounted: function () {
+            const that = this;
+            // that.originHeight = document.documentElement.clientHeight;
+            // window.onresize = function () {
+            //     that.screenHeight = document.documentElement.clientHeight;
+            //     if (that.originHeight - that.screenHeight > 60) {    //这里以防万一改了下判断形式，当屏幕高度减少了60px以上时才隐藏footer
+            //         that.isOriginHeight = false;
+            //     } else {
+            //         that.isOriginHeight = true;
+            //     }
+            // }
+            // 获取当前月份的前几个月
+            that.month()
+            // 获取记录详情
+            // that.getDetail();
+        },
+        methods: {
+            // 获取当前月份
+            month(){
+                this.dataArr = [];
+                var data = new Date();
+                var year = data.getFullYear();
+                data.setMonth(data.getMonth()+1, 1)//获取到当前月份,设置月份
+                let aaa=(16-data.getMonth())
+               for (var i = 0; i < 12-aaa; i++) {
+                    data.setMonth(data.getMonth() - 1);//每次循环一次 月份值减1
+                    var m = data.getMonth() + 1;
+                    m = m < 10 ? "0" + m : m;
+                    this.dataArr.unshift(data.getFullYear() + "-" + (m))
+                }
+                this.slots=[ 
+                    { 
+                        values: this.dataArr, 
+                    }
+                ] 
+                console.log(this.slots)
+            },
+           //激活picker组件
+            showmonth(e,value){
+               this.popupVisible=true;
+                
+            },
+            // 确定
+            select(){
+                this.pickerVal=this.$refs.pickerObj.getValues()[0];
+                console.log(this.pickerVal);
+                this.popupVisible=false;
+                //刷新列表接口
+                // this.getDetail()
+            },
+            // 取消
+            cancels(){
+                this.popupVisible=false;
+            },
+            //列表接口
+            // 获取记录详情
+            getDetail: function () {
+                const that=this;
+                var request={
+                    "mid":that.user.stu_id,
+                    "month":that.pickerVal
+                };
+                // that.loadAnimation();
+                $.ajax({
+                    type: "post",
+                    url: root+fdsmemberinfoquery,
+                    beforeSend: function (XMLHttpRequest) {
+                       XMLHttpRequest.setRequestHeader("token", that.user.token);
+                    },
+                    data: {
+                        request:JSON.stringify(request)
+                    },
+                    dataType: "json",
+                    success: function(data){
+                        // that.loading = false;
+                        // that.closeAnimation();
+                        if(data.code == 0){
+                            that.detailall=data.data;//学生详情
+
+                        }else {
+                            that.errorTips(data.msg);
+                        }
+                    },
+                    error: function() {
+                        // that.loading = false;
+                        // that.closeAnimation();
+                        that.errorTips("网络错误,请重试！");
+                    }
+                });
+            },
+            errorTips: function (msg) {
+                this.$toast(msg)
+            },
+            loadAnimation: function () {
+                this.$indicator.open({
+                    spinnerType: 'fading-circle'
+                });
+            },
+            closeAnimation: function () {
+                this.$indicator.close();
+            }
+        }
+    })
+</script>
+</body>
+</html>
+<style scoped>
+.picker-items{
+    text-align: center;
+    margin-left: -0.2rem;
+}
+.mint-popup-bottom{
+    width: 100%;
+    font-weight: normal;
+
+}
+.mint-datetime-cancel{
+    margin-left: 0.4rem;
+}
+.mint-datetime-confirm {
+    margin-right: 0.4rem;
+}
+</style>

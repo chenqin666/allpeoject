@@ -1,0 +1,102 @@
+<!--pages/my/recharge/recharge.wxml-->
+<!-- <wxs src="../../common/common.wxs" module="tools" /> -->
+<view class='page'>
+
+<view class="retitle">当前孩子的一卡通余额，将通过以下方式退回到您的账户中，请选择一种方式：</view>
+<view class="remain">
+
+  <view class="retitleone">
+    <view class="releft" style="{{showone==true?'color:#2AB1F3;border-bottom: 3rpx solid #2AB1F3;':''}}"  bindtap='onTypeClickone'>从历史充值订单原路退回</view>
+     <view class="reright" style="{{showtwo==true?'color:#2AB1F3;border-bottom: 3rpx solid #2AB1F3;':''}}" bindtap='onTypeClicktwo'>固定支付宝账号</view>
+  </view>
+  <!-- 从历史充值订单原路退回 -->
+   
+  <view wx:if="{{showone==true}}" style="overflow-y: scroll;height: 100%">
+<!-- <scroll-view scroll-y="true" style="height: 100%">  -->
+      <view class="retitletwo">您的余额将从以下订单原路退回，直接退回到充值账户余额：</view>
+            
+      <view class="rowmain" wx:for='{{datalist}}'>
+          <view class="wtil">订单编号：{{item.pay_type_sn}}</view>
+          <view class="wtil">退款金额：{{item.refund_money}}</view>
+          <view class="wtil">退款渠道：{{item.refund_type_text}}</view>
+      </view>
+      <view class="refound" bindtap="subone">提交</view>
+      <view style="height:220rpx"></view>
+   <!-- </scroll-view>   -->
+  </view>
+  
+<!-- 固定支付宝账号 -->
+<!-- <scroll-view scroll-y="{{sysScroll}}"  scroll-top="{{scrollTop}}" class="scroll-hei-2 bg-def"> -->
+  <view wx:if="{{showtwo==true}}">
+    <view class="retitletwo">您的余额将退回到您填写的支付宝账号中，请谨慎填写以下支付宝信息：</view>
+    <view class="twomain">
+        <view class="retitle">支付宝账号：</view>
+        <input  placeholder="请输入支付宝账号，手机号/邮箱" placeholder-class='placeholder' name="zhifubao" bindinput='zhifubaoinput' ></input>
+    </view>
+    <view class="twomain">
+        <view class="retitle">实名认证姓名：</view>
+        <!-- bindfocus="focusFn" bindblur="blurFn" -->
+        <input fixed="true" type="text" placeholder-class='placeholder' placeholder="请输入以上支付宝账号实名认证的真实姓名" name="shiming" bindinput='shiminginput' ></input>
+    </view>
+    <view class="twofooter">为确保您能收到退款，请再三确认账号信息准确无误</view>
+    <view class="refound" style="margin-top:80rpx;" bindtap="subtwo">提交</view>
+  </view>
+  
+
+  <!-- </scroll-view> -->
+</view>
+
+
+
+ <view  wx:if="{{totips==true}}">
+      <view class="popLayer"></view>
+      <view  class="totips">
+        <view class="p1">  </view>
+          <view class="p2">提交后退款方式将不能修改，确定提交吗?</view>
+          <view class="p3">
+
+          </view>
+          <view class="tofooter">
+              <view style="border-right: 0.5px solid #dedede;color:#2AB1F3" bindtap="confirmpsd">确定</view>
+              <view bindtap="cancel">取消</view>
+          </view>
+    </view> 
+   </view>
+
+   <!-- <view class='types-box' wx:if="{{list.length>0}}">
+      <view wx:if="{{list.length>0}}" class='{{checkedid==allcheck.product_id?"typeitemcheck":"typeitemnormal"}}' bindtap='onTypeClick' data-id='{{allcheck.product_id}}' >
+          <view class='type_heng'>
+           {{allcheck.product_name}}
+          </view>
+         
+        <view class="xuanfu" style="left: 0;" wx:if="{{checkedid==allcheck.product_id && allcheck}}">
+        <image  src="../../../images/xuanfuleft.png" class='xuanfuimg'></image>
+        <view>
+             <view class="xuanfuone">{{"￥"+allcheck.price}} </view>
+             <view class="xuanfutwo">{{allcheck.product_desc}} </view>
+         </view> 
+      </view>
+      
+    </view> 
+
+<view wx:if="{{allcheckone!='' && list.length>0}}" class='{{checkedid==allcheckone.product_id?"typeitemcheck":"typeitemnormal"}}' bindtap='onTypeClick' data-id='{{allcheckone.product_id}}' >
+          <view class='type_heng'>
+           {{allcheckone.product_name}}
+          </view>
+         
+      <view class="xuanfu" style="right: 0;" wx:if="{{checkedid==allcheckone.product_id &&allcheckone }}">
+      <image  src="../../../images/xuanfuright.png" class='xuanfuimg'></image>
+         <view>
+             <view class="xuanfuone">{{"￥"+allcheckone.price}} </view>
+             <view class="xuanfutwo">{{allcheckone.product_desc}} </view>
+         </view>
+      </view> 
+      
+    </view>
+
+  </view> -->
+ 
+</view>
+
+
+<view class='topline' />

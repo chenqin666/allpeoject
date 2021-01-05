@@ -1,0 +1,20 @@
+
+<!--pages/helps/helps.wxml-->
+<view class="page-todos">
+  <view class="list">
+      <view class="title">(1).充值成功以后，余额未增加并且交易明细里查不到此笔充值？</view>
+      <view class="titles">这里的充值是充值金额圈存成功，需要学生在刷卡机上刷卡后领款，这时余额方会更新成最新余额，以及交易明细中会有此笔充值交易记录。</view>
+       <view class="title">(2).充值成功后钱领不到卡上，如何解决？</view>
+      <view class="titles">由于学生买饭时贴卡时间太短，导致没有领取成功，可尝试下次消费刷卡时保持贴卡时间3-5秒，再次领取。</view>
+      <view class="titles">如仍未领取成功，请携带一卡通到补卡室/财务室办理领取。</view>
+      <view class="title">(3).订单状态说明：</view>
+       <view class="titles">支付成功，未同步：已支付成功，未同步到一卡通，请耐心等待</view>
+       <view class="titles">支付成功，已同步：已同步到一卡通，待学生刷卡领款</view>
+       <view class="title">(4).仍没有解决问题，请联系客服：</view>
+       <view class="titles">客服微信：  {{returnnumber}}   <text onTap="call" style="color:#2ab1f3">点击复制</text></view>
+  </view>
+</view>
+
+  
+
+

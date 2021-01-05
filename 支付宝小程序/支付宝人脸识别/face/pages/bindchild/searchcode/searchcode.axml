@@ -1,0 +1,90 @@
+<!--pages/parenthome/bindchild/searchcode/searchcode.wxml-->
+
+<view class='page' style="z-index:8;position: fixed;">
+
+  <view class='hor_line' />
+  <view class='contentView'>
+    <view class='label'>学校</view>
+    <input class='cell_item title' placeholder-class='placeholder' placeholder='请选择学校' onInput='inputname' maxlength='10' value='{{school?school.school_name:""}}' disabled='true' bindtap='onselectschool'>
+    </input>
+    <image style='width:17rpx;height:30rpx;margin-right:20rpx;' src='../../../../images/icon_arraw_right.png'></image>
+  </view>
+
+
+  <view class='normal_hor_line' />
+  <view class='contentView'>
+    <view class='label'>姓名</view>
+    <input class='cell_item title' placeholder-class='placeholder' placeholder='请输入学生姓名' onInput='inputname' maxlength='10'>
+
+    </input>
+    <image style='width:17rpx;height:30rpx;margin-right:20rpx;'></image>
+  </view>
+
+
+
+<view class='normal_hor_line' />
+  <view class='contentView'>
+    <view class='label'>年级</view>
+    <picker class='cell_item' bindchange="onpickgrade" value="{{gradeIndex}}" range="{{gradearray}}">
+      <block wx:if="{{gradeshown==false}}" class="cell_item title">
+        <view class="cell_item placeholder">
+          请选择年级
+        </view>
+      </block>
+      <block wx:else>
+        <view class="cell_item title">
+          {{gradearray[gradeIndex]}}
+        </view>
+      </block>
+    </picker>
+    <image style='width:17rpx;height:30rpx;margin-right:20rpx;' src='../../../../images/icon_arraw_right.png'></image>
+  </view>
+
+<!-- <view class='normal_hor_line' />
+  <view class='contentView'>
+    <view class='label'>班级</view>
+    <input class='cell_item title' placeholder-class='placeholder' placeholder='请输入班级' onInput='inputclass' maxlength='10' value='{{class_name}}'>
+    </input>
+       <view style='font-size:32rpx ;margin-right:20rpx;' >班</view>
+  </view>   -->
+
+<view class='normal_hor_line' />
+<view style='font-size:26rpx;color:red;width:90%;margin-left:45rpx;margin-top:30rpx'>安卓用户在输入姓名时，请不要使用手写输入法</view>
+
+  <view class='btn-box' style='margin-top:60rpx; '>
+    <button class='btn' bindtap='searchcode' hover-class='navigator-hover '>
+      查询
+    </button>
+  </view>
+
+<!-- <view style='font-size:24rpx;color:#999999;width:90%;margin-left:45rpx;margin-top:15rpx '>注：“编号”为学生编号+“@6000”，如：20180166666@6000，没有学生编号的家长可加QQ群799365370进行查询</view> -->
+
+
+</view>
+
+<view class='topline ' />
+
+<!-- 查询列表弹框 -->
+
+    <view  wx:if="{{showstulist}}">
+      <view class="popLayer"></view>
+      <!-- <scroll-view scroll-y="true" style="height:100%">  -->
+      <view  class="totips">
+          <view class="p1">查询结果</view>
+          <view class="tipcontent" wx:for="{{stulists}}" wx:key="index"
+data-item="{{item}}">
+            <view class="tiptop">{{item.username}}（{{item.grade_name}}-{{item.class_name}}）</view>
+            <view class="callcontert">
+                <view class="callleft">学号：{{item.card_number}}</view>
+                <view class="callright" data-data="{{item.card_number}}" bindtap="callnumber">复制</view>
+            </view>
+          </view>
+           
+          
+          <view class="tipfooters">
+              如不能确定学生学号，请联系学生或者班主任
+          </view>
+      </view> 
+      <!-- </scroll-view> -->
+   </view>
+  

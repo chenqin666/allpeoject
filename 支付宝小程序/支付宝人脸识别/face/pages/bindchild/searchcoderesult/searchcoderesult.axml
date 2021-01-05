@@ -1,0 +1,40 @@
+<!--pages/parenthome/bindchild/searchcoderesult/searchcoderesult.wxml-->
+<view wx:if="{{isNormal&&isNormal==true}}" class='page' >
+  <view class='title'>查询结果</view>
+<!-- 宋恙梦 -->
+  <view class='cell oneMargin'>
+    <span>学生：</span>
+     <span>{{name}}</span>
+  </view>
+
+  <view class='cell'>
+    <span>班级：</span>
+     <span>{{grade_class_name}}</span>
+  </view>
+
+
+
+  <view class='cell'>
+    <span>学生编号：</span>
+     <span class="code">{{code}}</span>
+     <button class='copy' hover-class='navigator-hover' bindtap='copycode'>复制</button>
+  </view>
+
+
+   <!-- <view class='cell'>
+    <span>一卡通初始密码：</span>
+     <span class="code">{{password}}</span>
+      <button class='copy' hover-class='navigator-hover' bindtap='copypassword'>复制</button>
+  </view> -->
+
+</view>
+
+
+<view wx:if="{{isNormal&&isNormal==false}}" class='page' >
+  <view class='title'>查询结果</view>
+  <view class='result_error'>
+    <span>抱歉，该班级有重名的学生，需您和孩子联系获取一卡通卡号和初始密码。</span>
+  </view>
+</view>
+
+<view class='topline ' />

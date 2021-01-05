@@ -1,0 +1,116 @@
+.page-todos {
+ position: fixed;
+  width: 100%;
+  height: 100%;
+  /* background-color: #fff; */
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+}
+.picker-items{
+    text-align: center;
+    margin-left: -0.2rem;
+}
+.mint-popup-bottom{
+    width: 100%;
+    font-weight: normal;
+
+}
+.mint-datetime-cancel{
+    margin-left: 0.4rem;
+}
+.mint-datetime-confirm {
+    margin-right: 0.4rem;
+}
+.chantitie{
+   width: 100%;
+   position: fixed;
+   font-weight: bold;
+   top: 0;
+    /* font-family: 'PingFangSC-Regular'; */
+    background-color: #ffffff;
+    border-bottom: 0.5px solid #dedede;
+    text-align: center;
+    font-size: 30rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+}
+.chantitie image{
+    width: 27rpx;
+    height: 17rpx;
+}
+.dealmainas{
+    margin-top: 105rpx;
+    width: 100%;
+    height: 100%;
+    /* height: 3rem; */
+    display: flex;
+    flex-direction: column;
+}
+.dealmainasone{
+    margin-top:   90rpx;
+    width: 100%;
+    /* height: 3rem; */
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+.dealmainas .rowmains view{
+    background: white;
+    flex: 1;
+    border-bottom: 0.5px solid #dedede;
+    font-size: 32rpx;
+    height: 60rpx;
+    padding: 20rpx 0;
+    /* line-height: 60rpx; */
+    padding-left:30rpx; 
+}
+
+.dealmainas .rowtop{
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    /* background: red; */
+    font-size:30rpx; 
+    padding: 0 30rpx;
+    border-bottom: 0.5px solid #dedede;
+}
+.dealheader{
+   color: #2ab1f3;
+   font-size: 30rpx;
+   margin: 15rpx 30rpx;
+}
+.dealmainas .rowmain{
+    background: white;
+    flex: 1;
+    height: 240rpx;
+    border: 0.5px solid #dedede;
+    font-size: 30rpx;
+    width: 90%;
+    margin: 29rpx auto;
+    border-radius: 15rpx;
+
+}
+.dealmainas .rowtop{
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    /* background: red; */
+    font-size:30rpx; 
+    padding: 0 30rpx;
+    border-bottom: 0.5px solid #dedede;
+}
+.rowmain .rowleft{
+  
+    font-size: 30rpx;
+    margin: 25rpx 30rpx;
+}
+.rowmain .rowleft .opdt{
+    font-size: 26rpx;
+    color: gray;
+    margin-top: 15rpx;
+    }
+.rights{
+  /* margin-right: 10rpx; */
+  float: right;
+}

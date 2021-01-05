@@ -1,0 +1,28 @@
+
+
+<view class='page'>
+<view class="takephoto">
+  <!-- <navigator open-type="navigateBack" hover-class="none" class="goBack">取消</navigator> -->
+
+  <view class="camera">
+    <canvas  disable-scroll="true" class="progress_bg" canvas-id="canvasProgressbg" width="550px" height="550px" style="border-radius:50%;"></canvas>
+
+    <canvas  disable-scroll="true" class="progress_canvas" canvas-id="canvasProgress" width="550px" height="550px" style="border-radius:50%;"></canvas>
+    <camera id='camera' class="realycamera" device-position="back" bindinitdone="startdrawCanvas" flash="off" binderror="error" style="border-radius:50%;">
+    <!-- front -->
+      <cover-view class='cameraGai'>
+        <cover-image src='../../img/biankuang.png' class='cover-image'></cover-image>
+      </cover-view>
+    </camera>
+  </view>
+  <!-- <view class="complete" bindtap="complateDis" wx:if="{{complete}}">完成</view> -->
+  <i-message id="message" />
+</view>
+
+<view  class="clickphoto">人脸拍摄</view>
+<view class="foter">
+    <view class="bottom_boxs" style="font-size: 26rpx;">校园人员信息查询</view>
+    <view class="bottom_boxs" style="font-size: 26rpx;">凡高云校园数字一体化解决方案</view>
+</view>
+
+</view>

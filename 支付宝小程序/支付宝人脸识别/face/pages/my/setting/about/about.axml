@@ -1,0 +1,18 @@
+<!--pages/my/setting/about/about.wxml-->
+
+<view class='page'>
+<view >
+    <image mode="widthFix" src='https://fangaoyun.alioss.100eks.cn/26_attachment/2020-12-04/parentstop.png' class='imageone'>
+
+    </image>
+</view> 
+   
+<view>
+<image mode="widthFix" src='https://fangaoyun.alioss.100eks.cn/26_attachment/2020-12-04/parentsbottom.png' class='imageone'>
+
+    </image>
+</view>
+
+
+</view>
+

@@ -1,0 +1,16 @@
+{
+  "pages": [
+   "pages/index/index",
+    "pages/login/login",
+    "pages/recognition/recognition",
+    "pages/details/details"
+   
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "人脸识别",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

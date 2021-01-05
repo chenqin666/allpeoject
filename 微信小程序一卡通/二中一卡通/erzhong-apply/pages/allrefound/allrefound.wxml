@@ -1,0 +1,37 @@
+
+<view class="page-todos">
+  <!-- <view class="chantitie">
+       <view class="row">
+             充值订单
+          </view>
+    </view> -->
+  
+        <view class="waittop">
+          <view class="waittitle">
+            <view class="wleft">退款状态</view>
+            <view class="wright" style="color:#06BC07">{{detailall.status_text}}</view>
+          </view>
+          <view class="waittitle">
+            <view class="wleft">退款方式</view>
+            <view class="wright">固定支付宝账号</view>
+          </view>
+          <view class="waittitle">
+            <view class="wleft">支付宝账号</view>
+            <view class="wright">{{detailall.alipay_account}}</view>
+          </view>
+          <view class="waittitle">
+            <view class="wleft">实名认证姓名</view>
+            <view class="wright">{{detailall.realname}}</view>
+          </view>
+        </view>
+
+   <!-- <view wx:if="{{detailall.length<=0 && leaveStartShown==true}}">
+      <view class="dealmainas" >
+          
+          <view class="rowmains" >
+                <view>暂无退款订单！</view>
+          </view>
+      </view>
+    </view> -->
+
+</view>

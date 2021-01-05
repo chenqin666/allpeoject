@@ -1,0 +1,9 @@
+
+<!--pages/login/login.wxml-->
+<view class='page'>
+<web-view src="https://m.fangao.100eks.com" onMessage="test">
+ 
+
+</web-view>
+<!-- <web-view src="https://ds.alipay.com/" onMessage="test"></web-view> -->
+</view>

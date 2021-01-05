@@ -1,0 +1,44 @@
+/* pages/my/setting/about/about.wxss */
+
+
+.page{
+   position: fixed;
+  width:100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.imageone {
+  
+  width: 100%;
+margin: 0 auto;
+}
+
+.versoncode {
+  font-size: 0.3rem;
+  color: #333;
+    margin-top: 0.3rem;
+}
+
+.desc {
+  width: 100%;
+  font-size: 0.3rem;
+  color: #333;
+  text-align: left;
+    margin-top: 0.9rem;
+    padding-left: 0.24rem;
+    padding-right: 0.2rem;
+    box-sizing: border-box;
+}
+
+.copyright {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 0.3rem;
+  font-size: 0.2rem;
+  color: #2ab1f3;
+}

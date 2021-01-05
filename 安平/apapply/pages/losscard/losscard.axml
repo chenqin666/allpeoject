@@ -1,0 +1,30 @@
+
+<view class="page-todos">
+<view class="chantitie" >
+            卡挂失
+    </view>
+    <view class="mainlock">
+        <view class="box">
+            <text> 姓名</text>
+           <text class="rights">{{stunames}}</text>
+        </view>
+        <view class="box">
+            <text>学号/卡号</text>
+           <text class="rights">{{cardnumber}}</text>
+        </view>
+        <view class="box">
+            <text>当前状态</text>
+            <text class="rights">
+              <!-- {{cardnumber}} -->
+            </text>
+        </view>
+        <view class="box">
+            <text>密码</text>
+            <input password='true' value="" placeholder="请填写6位新查询密码" onInput='jieinput'>
+        </view>
+    </view>
+    <view class="tixing">
+        <view>提醒：查询密码默认身份证后六位，X用0代替</view>
+    </view>
+    <view class="btn" onTap="to_payment">提交</view>
+</view>

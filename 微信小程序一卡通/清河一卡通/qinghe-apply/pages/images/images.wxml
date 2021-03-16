@@ -1,7 +1,0 @@
-
-<!--pages/login/login.wxml-->
-<view class='page'>
-<scroll-view scroll-y="true" style="height: 100%">   
-   <image class="image" src="../../img/caozuo.png" alt=""></image>
- </scroll-view>
-</view>
